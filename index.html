@@ -236,8 +236,8 @@ select{font:inherit;font-size:13px;padding:5px 6px;border-radius:7px;border:1px 
 const SESSIONS=[
   {id:"asia",name:"Asia",time:"18:00–02:00",start:18*60,end:2*60,w:{yld:.6,dxy:.8,on:.5,lvl:.7,fed:.6,vix:1}},
   {id:"lon",name:"London",time:"02:00–08:30",start:2*60,end:8*60+30,w:{yld:1,dxy:1.2,on:.8,lvl:.8,fed:.7,vix:.9}},
-  {id:"nyam",name:"NY AM",time:"09:30–12:00",start:9*60+30,end:12*60,w:{yld:1.2,dxy:.9,on:1.2,lvl:1.1,fed:1,vix:1}},
-  {id:"nypm",name:"NY PM",time:"13:30–16:00",start:13*60+30,end:16*60,w:{yld:1,dxy:.7,on:.6,lvl:1.2,fed:1.1,vix:1.1}}
+  {id:"nyam",name:"NY AM",time:"09:30–10:00",start:9*60+30,end:10*60,w:{yld:1.2,dxy:.9,on:1.2,lvl:1.1,fed:1,vix:1}},
+  {id:"ny10",name:"NY 10AM",time:"10:00–12:00",start:10*60,end:12*60,w:{yld:1.1,dxy:.8,on:.8,lvl:1.2,fed:1,vix:1.1}}
 ];
 const FACTORS=[
   {id:"yld",name:"10-yr Treasury yield",hint:"Falling yields help Nasdaq",bull:"10-yr yields are easing",bear:"10-yr yields are climbing"},
@@ -254,10 +254,12 @@ const EXAMPLE_LOG=[
   {d:"2026-10-19",s:"nyam",bias:"Bearish",conv:"Low",res:"up",ex:1},
   {d:"2026-10-20",s:"lon",bias:"Neutral",conv:"Low",res:"flat",ex:1},
   {d:"2026-10-20",s:"nyam",bias:"Bullish",conv:"High",res:"up",ex:1},
-  {d:"2026-10-21",s:"nypm",bias:"Bearish",conv:"Medium",res:"down",ex:1},
+  {d:"2026-10-21",s:"ny10",bias:"Bearish",conv:"Medium",res:"down",ex:1},
   {d:"2026-10-22",s:"nyam",bias:"Bullish",conv:"Medium",res:"down",ex:1}
 ];
 let AUTO={updated:"",date:"",vals:null,onh:"",onl:"",event:false,brief:"",calendar:[],sources:[]};
+let ASIA=null; // evening read for the Asia session (asia.json), written before the 11 pm UK rollover
+const asiaOn=()=>selSess==="asia"&&!!(ASIA&&ASIA.vals&&Date.now()-Date.parse(ASIA.at||0)<30*3600e3);
 const store={get(k,f){try{const v=localStorage.getItem(k);return v?JSON.parse(v):f}catch(e){return f}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
 let state=store.get("nqb-inputs",null)||JSON.parse(JSON.stringify(SAMPLE));
 let log=store.get("nqb-log",null)||EXAMPLE_LOG.slice();
@@ -273,13 +275,15 @@ function applyAuto(){
   }
 }
 async function loadAuto(){
+  try{const a=await fetch("asia.json?t="+Date.now(),{cache:"no-store"});if(a.ok)ASIA=await a.json()}catch(e){}
   try{const r=await fetch("data.json?t="+Date.now(),{cache:"no-store"});if(!r.ok)return;AUTO=await r.json();applyAuto();renderBrief();
     if(!$("v-today").hidden)renderToday();if(!$("v-inputs").hidden)renderInputs()}catch(e){}
 }
 const LIVE={scores:{},q:{}};
 function val(id){return(!state.manual[id]&&LIVE.scores[id]!=null)?LIVE.scores[id]:(state.vals[id]||0)}
-function srcOf(id){if(!state.manual[id]&&LIVE.scores[id]!=null)return"live";if(state.manual[id])return"man";if(AUTO.updated&&AUTO.vals&&AUTO.vals[id]!=null)return"am";return""}
-const TAG={live:'<span class="tag">Live</span>',man:'<span class="tag man">Manual</span>',am:'<span class="tag am">Pre-mkt</span>',"":""};
+function srcOf(id){if(asiaOn()&&$("v-inputs").hidden)return"eve";if(!state.manual[id]&&LIVE.scores[id]!=null)return"live";if(state.manual[id])return"man";if(AUTO.updated&&AUTO.vals&&AUTO.vals[id]!=null)return"am";return""}
+const TAG={live:'<span class="tag">Live</span>',man:'<span class="tag man">Manual</span>',am:'<span class="tag am">Pre-mkt</span>',eve:'<span class="tag am">Evening</span>',"":""};
+const evOn=()=>asiaOn()?!!ASIA.event:!!state.event;
 
 function nyNow(){
   const p=new Intl.DateTimeFormat("en-US",{timeZone:"America/New_York",hour:"2-digit",minute:"2-digit",hour12:false,weekday:"short",month:"short",day:"numeric",year:"numeric"}).formatToParts(new Date());
@@ -292,11 +296,11 @@ function activeSess(){const n=nyNow();return SESSIONS.find(s=>inSess(s,n.mins))}
 
 function compute(s){
   let sum=0,max=0;const parts=[];
-  FACTORS.forEach(f=>{const v=val(f.id),w=s.w[f.id];sum+=v*w;max+=2*w;parts.push({f,v,c:v*w})});
+  FACTORS.forEach(f=>{const v=asiaOn()?(ASIA.vals[f.id]||0):val(f.id),w=s.w[f.id];sum+=v*w;max+=2*w;parts.push({f,v,c:v*w})});
   const n=max?sum/max:0;
   const bias=n>.15?"Bullish":n<-.15?"Bearish":"Neutral";
   let lvl=Math.abs(n)>.5?2:Math.abs(n)>.3?1:0;
-  if(state.event)lvl=Math.max(0,lvl-1);
+  if(evOn())lvl=Math.max(0,lvl-1);
   return{n,bias,conv:["Low","Medium","High"][lvl],parts};
 }
 
@@ -319,7 +323,7 @@ function renderToday(){
   $("scoreTxt").textContent=(sc>0?"+":"")+sc;
   $("meterPin").style.left=`${50+r.n*50}%`;
   $("convChip").textContent=`${r.conv} conviction`;
-  $("eventChip").hidden=!state.event;
+  $("eventChip").hidden=!evOn();
   const sorted=r.parts.filter(p=>p.v!==0).sort((a,b)=>Math.abs(b.c)-Math.abs(a.c));
   const sup=sorted.filter(p=>Math.sign(p.c)===Math.sign(r.n)||r.bias==="Neutral").slice(0,2);
   const opp=sorted.filter(p=>Math.sign(p.c)!==Math.sign(r.n)&&r.bias!=="Neutral")[0];
@@ -327,7 +331,7 @@ function renderToday(){
   let why;
   if(!sorted.length)why="No factors are scored yet. Open Inputs and rate this morning's drivers.";
   else if(r.bias==="Neutral")why=`Signals are mixed for ${s.name}: ${sup.map(say).join(", while ")}. No clear edge, so wait for price to pick a side.`;
-  else why=`The ${s.name} lean is ${r.bias.toLowerCase()} because ${sup.map(say).join(" and ")}.`+(opp?` Against that, ${say(opp)}.`:"")+(state.event?" A scheduled release can override this, so size down into the number.":"");
+  else why=`The ${s.name} lean is ${r.bias.toLowerCase()} because ${sup.map(say).join(" and ")}.`+(opp?` Against that, ${say(opp)}.`:"")+(evOn()?" A scheduled release can override this, so size down into the number.":"");
   $("whyTxt").textContent=why;
   $("evList").innerHTML=r.parts.slice().sort((a,b)=>Math.abs(b.c)-Math.abs(a.c)).map(p=>{
     const c=Math.round(p.c*10)/10,cls=c>0?"pos":c<0?"neg":"zero";
@@ -335,7 +339,7 @@ function renderToday(){
   const risks=[];
   if(state.onh&&state.onl)risks.push(`A break of the overnight ${r.bias==="Bearish"?"high "+state.onh:"low "+state.onl} would invalidate the lean.`);
   if(opp)risks.push(`${opp.f.name} is pulling the other way.`);
-  if(state.event)risks.push("High-impact data today. Expect a fast two-sided move around the release.");
+  if(evOn())risks.push("High-impact data today. Expect a fast two-sided move around the release.");
   if(r.conv==="Low")risks.push("Low conviction. Treat this as context, not a trade signal.");
   risks.push("This is a rules-based score of your own inputs, not a forecast.");
   $("riskList").innerHTML=risks.map(x=>`<li>${x}</li>`).join("");
@@ -376,7 +380,7 @@ function save(){store.set("nqb-inputs",state)}
 
 document.addEventListener("click",e=>{
   const g=e.target.closest("[data-go]");if(g){go(g.dataset.go);return}
-  const t=e.target.closest(".tab");if(t){selSess=t.dataset.s;renderTabs();renderToday();return}
+  const t=e.target.closest(".tab");if(t){selSess=t.dataset.s;renderTabs();renderBrief();renderToday();return}
   const lb=e.target.closest("[data-live]");if(lb){delete state.manual[lb.dataset.live];save();renderInputs();return}
   const sb=e.target.closest(".seg button");if(sb){const f=sb.dataset.f;state.vals[f]=+sb.dataset.v;if(LIVE.scores[f]!=null||srcOf(f)==="am")state.manual[f]=true;save();renderInputs();return}
 });
@@ -397,6 +401,13 @@ $("clearEx").addEventListener("click",()=>{log=log.filter(e=>!e.ex);store.set("n
 function esc(s){return String(s==null?"":s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]))}
 function renderBrief(){
   $("briefCard").hidden=false;
+  const B=asiaOn()?ASIA:AUTO;
+  if(asiaOn()){
+    $("briefMeta").textContent=`Evening read for Asia · ${ASIA.updated||""}`;
+    $("briefTxt").textContent=ASIA.brief||ASIA.headline||"";
+    $("calWrap").hidden=true;
+    $("srcList").innerHTML=(B.sources||[]).length?"Sources: "+B.sources.map(s=>`<a href="${esc(s.url)}" target="_blank" rel="noopener" style="color:var(--accent)">${esc(s.title)}</a>`).join(" · "):"";
+    return}
   if(!AUTO.updated){
     $("briefMeta").textContent="Waiting for first update";
     $("briefTxt").textContent="Loading this morning's update. It refreshes every weekday at 8:45 and 9:20 a.m. New York time.";

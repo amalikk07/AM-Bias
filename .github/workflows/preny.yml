@@ -1,0 +1,35 @@
+name: Pre NY alert
+
+# Sends the Pre NY bias at exactly 8:28 am New York time (2 minutes before the 8:30 data drop), weekdays.
+# The site only sends it on days with USD red folder news before the open.
+# GitHub's scheduler can start jobs late, so this wakes ~40 minutes early and waits for 8:28.
+# Two start times cover US summer time (EDT) and winter time (EST); the one that doesn't match exits.
+on:
+  schedule:
+    - cron: "48 11 * * 1-5"   # 7:48 am EDT
+    - cron: "48 12 * * 1-5"   # 7:48 am EST
+  workflow_dispatch:
+
+concurrency:
+  group: preny
+  cancel-in-progress: false
+
+jobs:
+  alert:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - name: Wait until 8:28 am New York, then call the site
+        env:
+          URL: ${{ secrets.PUSH_CRON_URL }}
+          KEY: ${{ secrets.CRON_SECRET }}
+        run: |
+          if [ -z "$URL" ] || [ -z "$KEY" ]; then echo "::warning::Add the PUSH_CRON_URL and CRON_SECRET secrets."; exit 0; fi
+          target=$(TZ=America/New_York date -d "today 08:28:05" +%s)
+          now=$(date +%s); wait=$((target - now))
+          echo "Seconds until 8:28 am New York: $wait"
+          if [ "$wait" -lt -60 ] || [ "$wait" -gt 5400 ]; then echo "Not this run's slot (other time zone or too late)."; exit 0; fi
+          if [ "$wait" -gt 0 ]; then sleep "$wait"; fi
+          code=$(curl -sS -o out.json -w "%{http_code}" -H "Authorization: Bearer $KEY" "$URL" || echo 000)
+          echo "HTTP $code"; cat out.json; echo
+          if [ "$code" != "200" ]; then echo "::error::The site answered HTTP $code: $(head -c 300 out.json)"; exit 1; fi

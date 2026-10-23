@@ -194,8 +194,8 @@ select{font:inherit;font-size:13px;padding:5px 6px;border-radius:7px;border:1px 
       <label class="toggle" style="margin-top:14px"><input type="checkbox" id="eventRisk"> High-impact release today (CPI, NFP, FOMC, GDP)</label>
     </article>
     <article class="card">
-      <h2>Live data key</h2>
-      <p class="note">Paste your FMP API key from your FMP dashboard. It's saved only on this device and is sent only to FMP.</p>
+      <h2>Your own FMP key</h2>
+      <p class="note">Optional. Without a key, live prices come from the shared feed every 15 minutes. With your own FMP key (from your FMP dashboard) this device updates every 5 minutes instead. The key is saved only on this device and sent only to FMP.</p>
       <div class="row" style="margin-top:12px">
         <input id="fmpKey" type="password" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="FMP API key" aria-label="FMP API key" style="flex:1;min-width:180px;font:inherit;font-family:var(--mono);padding:10px;border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--ink)">
         <button class="btn" id="saveKey" type="button">Save key</button>
@@ -448,9 +448,18 @@ async function fmpGet(path,params){
   return j;
 }
 function marketHours(){const n=nyNow();return!["Sat","Sun"].includes(n.wd)&&n.mins>=8*60&&n.mins<16*60+15}
+async function loadShared(){
+  try{
+    const r=await fetch("quotes.json?t="+Date.now(),{cache:"no-store"});
+    if(!r.ok){setMsg("Live prices aren't set up yet");return}
+    const j=await r.json();LIVE.q=Object.assign({},j.q||{});if(j.yld&&j.yld.length)LIVE.q.yld=j.yld;rescore();
+    const t=j.updated?new Intl.DateTimeFormat("en-US",{timeZone:"America/New_York",weekday:"short",hour:"2-digit",minute:"2-digit",hour12:false}).format(new Date(j.updated)):"";
+    setMsg(t?`Updated ${t} ET · refreshes every 15 min`:"Waiting for first prices");
+  }catch(e){setMsg("Couldn't load live prices. Tap Refresh.")}
+}
 async function refreshLive(force){
-  if(!getKey()){setMsg("Add your FMP key to see live prices");$("liveSetup").hidden=false;return}
   $("liveSetup").hidden=true;
+  if(!getKey()){await loadShared();return}
   if(busy)return;if(!force&&Date.now()-lastFetch<4.5*60000)return;
   busy=true;setMsg("Updating…");
   const jobs=Object.entries(QUOTES).map(([k,sym])=>fmpGet("quote",{symbol:sym}).then(j=>{if(Array.isArray(j)&&j[0])LIVE.q[k]=j[0]}));
@@ -471,10 +480,10 @@ function isoDaysAgo(n){return new Intl.DateTimeFormat("en-CA",{timeZone:"America
 function startLive(){
   refreshLive(true);
   // Auto-refresh every 5 minutes, only on weekdays 8:00–16:15 ET while the page is open, to stay inside the free plan's daily limit
-  setInterval(()=>{if(!document.hidden&&marketHours())refreshLive(false)},5*60000);
+  setInterval(()=>{if(document.hidden)return;if(!getKey())loadShared();else if(marketHours())refreshLive(false)},getKey()?5*60000:3*60000);
 }
 $("liveRefresh").addEventListener("click",()=>refreshLive(true));
-function showKeyStatus(){const k=getKey();$("keyStatus").textContent=k?`Key saved on this device (ends ${k.slice(-4)}). Clear the box and tap Save to remove it.`:"No key saved yet."}
+function showKeyStatus(){const k=getKey();$("keyStatus").textContent=k?`Key saved on this device (ends ${k.slice(-4)}). Clear the box and tap Save to remove it.`:"No key saved. Using the shared feed."}
 $("saveKey").addEventListener("click",()=>{const k=$("fmpKey").value.trim();setKey(k);$("fmpKey").value="";showKeyStatus();toast(k?"Key saved":"Key removed");LIVE.q={};LIVE.scores={};rescore();refreshLive(true)});
 showKeyStatus();
 

@@ -1,0 +1,34 @@
+name: NY 10AM alert
+
+# Sends the NY 10AM bias at exactly 9:58 am New York time (2 minutes before the 10:00 open), weekdays.
+# GitHub's scheduler can start jobs late, so this wakes ~40 minutes early and waits for 9:58.
+# Two start times cover US summer time (EDT) and winter time (EST); the one that doesn't match exits.
+on:
+  schedule:
+    - cron: "18 13 * * 1-5"   # 9:18 am EDT
+    - cron: "18 14 * * 1-5"   # 9:18 am EST
+  workflow_dispatch:
+
+concurrency:
+  group: ny10
+  cancel-in-progress: false
+
+jobs:
+  alert:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - name: Wait until 9:58 am New York, then call the site
+        env:
+          URL: ${{ secrets.PUSH_CRON_URL }}
+          KEY: ${{ secrets.CRON_SECRET }}
+        run: |
+          if [ -z "$URL" ] || [ -z "$KEY" ]; then echo "::warning::Add the PUSH_CRON_URL and CRON_SECRET secrets."; exit 0; fi
+          target=$(TZ=America/New_York date -d "today 09:58:05" +%s)
+          now=$(date +%s); wait=$((target - now))
+          echo "Seconds until 9:58 am New York: $wait"
+          if [ "$wait" -lt -60 ] || [ "$wait" -gt 5400 ]; then echo "Not this run's slot (other time zone or too late)."; exit 0; fi
+          if [ "$wait" -gt 0 ]; then sleep "$wait"; fi
+          code=$(curl -sS -o out.json -w "%{http_code}" -H "Authorization: Bearer $KEY" "$URL" || echo 000)
+          echo "HTTP $code"; cat out.json; echo
+          if [ "$code" != "200" ]; then echo "::error::The site answered HTTP $code: $(head -c 300 out.json)"; exit 1; fi

@@ -1,46 +1,42 @@
 {
- "updated": "Thu Oct 22 · 9:07 PM ET",
- "date": "2026-10-23",
- "vals": {
-  "yld": 2,
-  "dxy": 1,
-  "on": 0,
-  "lvl": 0,
-  "fed": 0,
-  "vix": -2
- },
- "onh": "",
- "onl": "",
- "event": false,
- "brief": "Early overnight read for Friday, taken about 9 PM ET Thursday, so overnight trend and levels are not yet scored (0); reliable NQ settlement and Globex data were not available. Thursday's AI and chip sell-off after Meta's results sent the Nasdaq Composite down 2.6% and VIX up 14% to 19.03, while oil jumped on Iran and Houthi tensions. The 10-year yield fell about 17 bp to 4.96% and the dollar is slightly softer against the yen, which is the main offset. Key risk is further tech de-risking ahead of next week's FOMC; the Fed is in its blackout period, and Friday's data are flash PMIs and final UMich sentiment.",
- "calendar": [
-  {
-   "time": "9:45",
-   "event": "S&P Global flash manufacturing & services PMI (Oct)",
-   "impact": "medium"
+  "updated": "Fri Oct 23 · 9:25 AM ET",
+  "date": "2026-10-23",
+  "vals": {
+    "yld": -1,
+    "dxy": 0,
+    "on": 0,
+    "lvl": 0,
+    "fed": 0,
+    "vix": -1
   },
-  {
-   "time": "10:00",
-   "event": "UMich consumer sentiment & inflation expectations (final Oct)",
-   "impact": "medium"
-  }
- ],
- "sources": [
-  {
-   "title": "AP: Nasdaq tumbles 694",
-   "url": "https://tvnewscheck.com/business/article/dow-adds-12-nasdaq-tumbles-694-sp-500-falls-94/"
-  },
-  {
-   "title": "Investrade market review Oct 22",
-   "url": "https://investrade.com/market-review-october-22-2026/"
-  },
-  {
-   "title": "Investing.com week-ahead calendar",
-   "url": "https://www.investing.com/news/stock-market-news/us-economic-calendar-preview-key-releases-for-the-week-of-oct-1923-2026-93CH-4958178"
-  },
-  {
-   "title": "Kiplinger economic calendar",
-   "url": "https://www.kiplinger.com/investing/economy/this-weeks-economic-calendar"
-  }
- ]
+  "onh": "",
+  "onl": "",
+  "event": false,
+  "brief": "Nasdaq 100 futures are roughly flat (about -0.03% near 29,135) after Thursday's 2.6% Nasdaq drop on AI-spending worries, with Dow futures weaker. The 10-year yield is a few bp higher near 4.95-4.98% after Thursday's sharp fall, VIX is up about 3% near 19.7, and Brent near $113 on Middle East tensions keeps inflation worries alive. Live FX and NQ overnight-range data were unavailable this run, so the dollar, overnight-trend and level factors are scored 0. Key risk is renewed tech de-risking into the 9:45 flash PMIs and 10:00 UMich sentiment, with the Fed in its pre-FOMC blackout.",
+  "calendar": [
+    {
+      "time": "9:45",
+      "event": "S&P Global flash manufacturing & services PMI (Oct)",
+      "impact": "medium"
+    },
+    {
+      "time": "10:00",
+      "event": "UMich consumer sentiment & inflation expectations (final Oct)",
+      "impact": "medium"
+    }
+  ],
+  "sources": [
+    {
+      "title": "Yahoo Finance live: futures slip after tech sell-off",
+      "url": "https://finance.yahoo.com/markets/live/stock-market-today-friday-october-23-dow-sp-500-nasdaq-tesla-meta-093000521.html"
+    },
+    {
+      "title": "Stocktwits: Nasdaq futures premarket",
+      "url": "https://stocktwits.com/news-articles/markets/equity/nasdaq-futures-slide-premarket-as-ai-spending-worries-resurface-oil-tops-112-on-iran-tensions-supply-concerns/cZxw43bRBwp"
+    },
+    {
+      "title": "Investrade weekly event calendar",
+      "url": "https://investrade.com/weekly-event-calendar-10-19-2026-10-23-2026/"
+    }
+  ]
 }

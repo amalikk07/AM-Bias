@@ -1,0 +1,46 @@
+{
+ "updated": "Thu Oct 22 · 9:07 PM ET",
+ "date": "2026-10-23",
+ "vals": {
+  "yld": 2,
+  "dxy": 1,
+  "on": 0,
+  "lvl": 0,
+  "fed": 0,
+  "vix": -2
+ },
+ "onh": "",
+ "onl": "",
+ "event": false,
+ "brief": "Early overnight read for Friday, taken about 9 PM ET Thursday, so overnight trend and levels are not yet scored (0); reliable NQ settlement and Globex data were not available. Thursday's AI and chip sell-off after Meta's results sent the Nasdaq Composite down 2.6% and VIX up 14% to 19.03, while oil jumped on Iran and Houthi tensions. The 10-year yield fell about 17 bp to 4.96% and the dollar is slightly softer against the yen, which is the main offset. Key risk is further tech de-risking ahead of next week's FOMC; the Fed is in its blackout period, and Friday's data are flash PMIs and final UMich sentiment.",
+ "calendar": [
+  {
+   "time": "9:45",
+   "event": "S&P Global flash manufacturing & services PMI (Oct)",
+   "impact": "medium"
+  },
+  {
+   "time": "10:00",
+   "event": "UMich consumer sentiment & inflation expectations (final Oct)",
+   "impact": "medium"
+  }
+ ],
+ "sources": [
+  {
+   "title": "AP: Nasdaq tumbles 694",
+   "url": "https://tvnewscheck.com/business/article/dow-adds-12-nasdaq-tumbles-694-sp-500-falls-94/"
+  },
+  {
+   "title": "Investrade market review Oct 22",
+   "url": "https://investrade.com/market-review-october-22-2026/"
+  },
+  {
+   "title": "Investing.com week-ahead calendar",
+   "url": "https://www.investing.com/news/stock-market-news/us-economic-calendar-preview-key-releases-for-the-week-of-oct-1923-2026-93CH-4958178"
+  },
+  {
+   "title": "Kiplinger economic calendar",
+   "url": "https://www.kiplinger.com/investing/economy/this-weeks-economic-calendar"
+  }
+ ]
+}

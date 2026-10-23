@@ -1,0 +1,489 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>AM Bias</title>
+<meta name="theme-color" content="#ffffff">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="AM Bias">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<link rel="apple-touch-icon" href="icon-180.png">
+<link rel="icon" href="icon-180.png">
+<link rel="manifest" href="manifest.json">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: phone app shell — sticky clock header, one view at a time, fixed bottom tab bar */
+:root{
+  --bg:#ffffff; --surface:#ffffff; --ink:#141b26; --muted:#5b6678; --line:#e1e5ec;
+  --accent:#1f4fd1; --accent-soft:#e3eafc;
+  --bull:#0f7a4a; --bull-soft:#e1f3ea; --bear:#c0322f; --bear-soft:#fbe6e5; --flat:#8a6a12; --flat-soft:#f7efd8;
+  --display:"Barlow Condensed","Arial Narrow",Arial,sans-serif;
+  --body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*{box-sizing:border-box}
+body{margin:0}
+img{max-width:100%}
+[hidden]{display:none!important}
+html,body{background:var(--bg);color:var(--ink)}
+body{font-family:var(--body);font-size:15px;line-height:1.5}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--surface)}
+.wrap{max-width:520px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--surface);border-bottom:1px solid var(--line)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-block:12px}
+.brand{font-family:var(--display);font-weight:700;font-size:22px;letter-spacing:.02em;text-transform:uppercase}
+.brand span{color:var(--accent)}
+.clock{font-family:var(--mono);font-size:13px;color:var(--muted);text-align:right;font-variant-numeric:tabular-nums}
+.clock b{color:var(--ink);font-weight:500}
+main{padding-block:16px 110px}
+.view{display:flex;flex-direction:column;gap:16px}
+.eyebrow{font-size:11.5px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+.tabs{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+.tab{appearance:none;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:10px;padding:8px 4px;font:inherit;cursor:pointer;text-align:center;position:relative}
+.tab .n{display:block;font-weight:600;font-size:13.5px}
+.tab .t{display:block;font-family:var(--mono);font-size:10.5px;color:var(--muted)}
+.tab[aria-selected="true"]{border-color:var(--accent);background:var(--accent-soft)}
+.tab .live{position:absolute;top:6px;right:6px;width:7px;height:7px;border-radius:50%;background:var(--bull)}
+.status{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:500;padding:4px 10px;border-radius:999px;background:var(--bull-soft);color:var(--bull);align-self:flex-start}
+.status.off{background:var(--accent-soft);color:var(--muted)}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px}
+.bias-card{border-top:4px solid var(--c,var(--muted))}
+.bias-dir{display:flex;align-items:baseline;gap:10px;margin:6px 0 2px;color:var(--c)}
+.bias-dir .arrow{font-family:var(--display);font-size:40px;line-height:1}
+.bias-dir .word{font-family:var(--display);font-weight:700;font-size:56px;line-height:1;letter-spacing:.01em}
+.meter{margin:14px 0 6px;position:relative;height:8px;border-radius:4px;background:linear-gradient(90deg,var(--bear-soft),var(--line) 50%,var(--bull-soft))}
+.meter i{position:absolute;top:-4px;width:4px;height:16px;border-radius:2px;background:var(--ink);transform:translateX(-50%)}
+.meter-l{display:flex;justify-content:space-between;font-family:var(--mono);font-size:11px;color:var(--muted)}
+.conv{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:12px;font-size:13.5px}
+.chip{font-size:12px;font-weight:600;padding:3px 9px;border-radius:6px;background:var(--accent-soft);color:var(--ink)}
+.chip.warn{background:var(--flat-soft);color:var(--flat)}
+.why{margin:14px 0 0;color:var(--ink);max-width:62ch}
+h2{font-family:var(--display);font-weight:600;font-size:22px;margin:0 0 10px;letter-spacing:.01em;text-wrap:balance}
+.ev{display:flex;flex-direction:column;gap:0}
+.ev-row{display:grid;grid-template-columns:1fr auto;gap:12px;padding:10px 0;border-top:1px solid var(--line);align-items:center}
+.ev-row:first-child{border-top:0;padding-top:0}
+.ev-name{font-size:14px}
+.ev-val{font-family:var(--mono);font-size:13px;font-variant-numeric:tabular-nums;font-weight:500}
+.pos{color:var(--bull)} .neg{color:var(--bear)} .zero{color:var(--muted)}
+.risk{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:6px;font-size:14px}
+.btn{appearance:none;border:0;border-radius:10px;padding:12px 16px;font:inherit;font-weight:600;cursor:pointer;background:var(--accent);color:var(--surface)}
+.btn.ghost{background:transparent;color:var(--accent);border:1px solid var(--line)}
+.btn:focus-visible,.tab:focus-visible,.seg button:focus-visible,.nav button:focus-visible,select:focus-visible,input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.row{display:flex;gap:10px;flex-wrap:wrap}
+.factor{display:flex;flex-direction:column;gap:8px;padding:12px 0;border-top:1px solid var(--line)}
+.factor:first-of-type{border-top:0;padding-top:0}
+.factor-h{display:flex;justify-content:space-between;gap:10px;font-size:14px;font-weight:500}
+.factor-h small{font-weight:400;color:var(--muted);font-size:12.5px}
+.seg{display:grid;grid-template-columns:repeat(5,1fr);border:1px solid var(--line);border-radius:9px;overflow:hidden}
+.seg button{appearance:none;border:0;border-left:1px solid var(--line);background:var(--surface);color:var(--muted);font:inherit;font-size:12px;padding:8px 2px;cursor:pointer}
+.seg button:first-child{border-left:0}
+.seg button[aria-pressed="true"]{color:var(--ink);font-weight:600}
+.seg button[aria-pressed="true"][data-v^="-"]{background:var(--bear-soft);color:var(--bear)}
+.seg button[aria-pressed="true"][data-v="0"]{background:var(--accent-soft)}
+.seg button[aria-pressed="true"][data-v="1"],.seg button[aria-pressed="true"][data-v="2"]{background:var(--bull-soft);color:var(--bull)}
+.toggle{display:flex;align-items:center;gap:10px;font-size:14px;padding-top:12px;border-top:1px solid var(--line)}
+.toggle input{width:20px;height:20px;accent-color:var(--accent)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.stat{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px}
+.stat b{display:block;font-family:var(--display);font-size:30px;line-height:1.1;font-variant-numeric:tabular-nums}
+.stat span{font-size:12px;color:var(--muted)}
+.log{display:flex;flex-direction:column}
+.log-row{display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:center;padding:10px 0;border-top:1px solid var(--line);font-size:13.5px}
+.log-row:first-child{border-top:0}
+.log-date{font-family:var(--mono);font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums;min-width:74px}
+.mark{font-family:var(--mono);font-size:12px;font-weight:600;padding:2px 8px;border-radius:6px}
+.mark.hit{background:var(--bull-soft);color:var(--bull)} .mark.miss{background:var(--bear-soft);color:var(--bear)} .mark.open{background:var(--accent-soft);color:var(--muted)}
+.ex{font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--flat);margin-left:6px}
+select{font:inherit;font-size:13px;padding:5px 6px;border-radius:7px;border:1px solid var(--line);background:var(--surface);color:var(--ink)}
+.note{font-size:13px;color:var(--muted);max-width:62ch;margin:0}
+.nav{position:fixed;left:0;right:0;bottom:0;z-index:6;background:var(--surface);border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom,0px)}
+.nav .wrap{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;padding-block:8px}
+.nav button{appearance:none;border:0;background:transparent;color:var(--muted);font:inherit;font-size:12.5px;font-weight:500;padding:6px;border-radius:10px;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:2px}
+.nav button svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.8}
+.nav button[aria-current="page"]{color:var(--accent);background:var(--accent-soft)}
+.live{display:flex;flex-direction:column;gap:8px}
+.live-h{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+.live-msg{font-size:12px;color:var(--muted);font-family:var(--mono)}
+.tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+@media (max-width:420px){.tiles{grid-template-columns:repeat(2,1fr)}}
+.tile{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:9px 10px;display:flex;flex-direction:column;min-width:0}
+.tile.wide{grid-column:1/-1;flex-direction:row;align-items:baseline;gap:10px;flex-wrap:wrap}
+.tile.wide .tl{flex:1 1 100%}
+.tile.wide b{font-size:20px}
+.tile .tl{font-size:11.5px;color:var(--muted)}
+.tile b{font-family:var(--mono);font-weight:500;font-size:16px;font-variant-numeric:tabular-nums}
+.tile .tc{font-family:var(--mono);font-size:11.5px;font-variant-numeric:tabular-nums}
+.tag{font-size:10.5px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;padding:1px 6px;border-radius:5px;background:var(--bull-soft);color:var(--bull);margin-left:6px;vertical-align:1px}
+.tag.man{background:var(--flat-soft);color:var(--flat)}
+.tag.am{background:var(--accent-soft);color:var(--accent)}
+.linkbtn{appearance:none;border:0;background:none;color:var(--accent);font:inherit;font-size:12.5px;cursor:pointer;padding:0;text-decoration:underline}
+.btn.small{padding:8px 12px;font-size:13px;align-self:flex-start}
+.toast{position:fixed;left:50%;bottom:calc(84px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:9px 14px;border-radius:9px;font-size:13.5px;z-index:8}
+@media (prefers-reduced-motion:no-preference){.meter i{transition:left .35s ease}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <div class="brand">AM <span>Bias</span></div>
+  <div class="clock"><b id="nyTime">--:--</b> New York<br><span id="nyDate"></span></div>
+</div></header>
+
+<main class="wrap">
+  <!-- TODAY -->
+  <section class="view" id="v-today">
+    <div class="tabs" role="tablist" id="sessTabs"></div>
+    <span class="status" id="sessStatus"></span>
+    <section class="live" aria-label="Live market">
+      <div class="live-h"><span class="eyebrow">Live market · FMP</span><span class="live-msg"><span id="liveMsg">Connecting…</span> <button class="linkbtn" id="liveRefresh" type="button">Refresh</button></span></div>
+      <div class="tiles">
+        <div class="tile wide"><span class="tl">Nasdaq Composite (cash index, US hours)</span><b id="tNdq">–</b><span class="tc" id="tNdqC"></span></div>
+        <div class="tile"><span class="tl">VIX</span><b id="tVix">–</b><span class="tc" id="tVixC"></span></div>
+        <div class="tile"><span class="tl">10-yr yield</span><b id="tYld">–</b><span class="tc" id="tYldC"></span></div>
+        <div class="tile"><span class="tl">EUR/USD</span><b id="tEur">–</b><span class="tc" id="tEurC"></span></div>
+        <div class="tile"><span class="tl">USD/JPY</span><b id="tJpy">–</b><span class="tc" id="tJpyC"></span></div>
+      </div>
+      <button class="btn ghost small" id="liveSetup" data-go="inputs" type="button" hidden>Add your FMP key</button>
+    </section>
+    <article class="card" id="briefCard" hidden>
+      <div class="eyebrow" id="briefMeta"></div>
+      <h2 style="margin-top:4px">Morning brief</h2>
+      <p class="why" id="briefTxt" style="margin-top:0"></p>
+      <div id="calWrap" hidden><div class="eyebrow" style="margin-top:14px">Today's calendar (ET)</div><ul class="risk" id="calList" style="margin-top:8px"></ul></div>
+      <p class="note" id="srcList" style="margin-top:12px"></p>
+    </article>
+    <article class="card bias-card" id="biasCard">
+      <div class="eyebrow" id="biasEyebrow">Session outlook · NQ &amp; ES</div>
+      <div class="bias-dir"><span class="arrow" id="biasArrow"></span><span class="word" id="biasWord"></span></div>
+      <div class="meter"><i id="meterPin"></i></div>
+      <div class="meter-l"><span>Bear −100</span><span id="scoreTxt">0</span><span>Bull +100</span></div>
+      <div class="conv"><span class="chip" id="convChip"></span><span class="chip warn" id="eventChip" hidden>Event risk</span></div>
+      <p class="why" id="whyTxt"></p>
+    </article>
+    <article class="card">
+      <h2>Evidence</h2>
+      <div class="ev" id="evList"></div>
+    </article>
+    <article class="card">
+      <h2>Risks to the call</h2>
+      <ul class="risk" id="riskList"></ul>
+    </article>
+    <div class="row">
+      <button class="btn" id="logBtn">Log this call</button>
+      <button class="btn ghost" data-go="inputs">Edit inputs</button>
+    </div>
+  </section>
+
+  <!-- INPUTS -->
+  <section class="view" id="v-inputs" hidden>
+    <div>
+      <div class="eyebrow">Morning prep</div>
+      <h2 style="margin-top:4px">Score today's inputs</h2>
+      <p class="note">Rate each factor from strongly bearish (−2) to strongly bullish (+2) for NQ. Each session weighs them differently, so the same inputs can give a different call in Asia than in NY AM.</p>
+    </div>
+    <article class="card" id="factorList"></article>
+    <article class="card">
+      <h2>Key levels</h2>
+      <div class="row" style="gap:12px">
+        <label style="flex:1;min-width:130px;font-size:13px;color:var(--muted)">Overnight high<br><input id="onh" inputmode="decimal" style="width:100%;font:inherit;font-family:var(--mono);padding:8px;border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--ink)"></label>
+        <label style="flex:1;min-width:130px;font-size:13px;color:var(--muted)">Overnight low<br><input id="onl" inputmode="decimal" style="width:100%;font:inherit;font-family:var(--mono);padding:8px;border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--ink)"></label>
+      </div>
+      <label class="toggle" style="margin-top:14px"><input type="checkbox" id="eventRisk"> High-impact release today (CPI, NFP, FOMC, GDP)</label>
+    </article>
+    <article class="card">
+      <h2>Live data key</h2>
+      <p class="note">Paste your FMP API key from your FMP dashboard. It's saved only on this device and is sent only to FMP.</p>
+      <div class="row" style="margin-top:12px">
+        <input id="fmpKey" type="password" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="FMP API key" aria-label="FMP API key" style="flex:1;min-width:180px;font:inherit;font-family:var(--mono);padding:10px;border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--ink)">
+        <button class="btn" id="saveKey" type="button">Save key</button>
+      </div>
+      <p class="note" id="keyStatus" style="margin-top:8px"></p>
+    </article>
+    <div class="row">
+      <button class="btn" data-go="today">See bias</button>
+      <button class="btn ghost" id="resetBtn">Reset inputs</button>
+    </div>
+  </section>
+
+  <!-- RECORD -->
+  <section class="view" id="v-record" hidden>
+    <div>
+      <div class="eyebrow">Does the bias have an edge?</div>
+      <h2 style="margin-top:4px">Track record</h2>
+    </div>
+    <div class="stats">
+      <div class="stat"><b id="stHit">–</b><span>Hit rate</span></div>
+      <div class="stat"><b id="stHigh">–</b><span>High/Med conv.</span></div>
+      <div class="stat"><b id="stN">0</b><span>Graded calls</span></div>
+    </div>
+    <article class="card"><div class="log" id="logList"></div></article>
+    <p class="note">Set the result once the session closes: Up, Down or Flat (inside ±0.25% for the session). A Neutral call counts as a hit only on a Flat session. You need 50+ graded calls before the hit rate means much.</p>
+    <div class="row"><button class="btn ghost" id="clearEx">Remove example rows</button></div>
+  </section>
+</main>
+
+<nav class="nav" aria-label="Main"><div class="wrap">
+  <button data-go="today" aria-current="page"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="7" height="7" rx="1.5"/><rect x="13" y="4" width="7" height="7" rx="1.5"/><rect x="4" y="13" width="7" height="7" rx="1.5"/><rect x="13" y="13" width="7" height="7" rx="1.5"/></svg>Today</button>
+  <button data-go="inputs"><svg viewBox="0 0 24 24"><path d="M5 7h14M5 12h14M5 17h14"/><circle cx="9" cy="7" r="2"/><circle cx="15" cy="12" r="2"/><circle cx="8" cy="17" r="2"/></svg>Inputs</button>
+  <button data-go="record"><svg viewBox="0 0 24 24"><path d="M4 18l5-6 4 3 7-9"/><path d="M4 21h16"/></svg>Record</button>
+</div></nav>
+<div class="toast" id="toast" hidden></div>
+
+<script>
+const SESSIONS=[
+  {id:"asia",name:"Asia",time:"18:00–02:00",start:18*60,end:2*60,w:{yld:.6,dxy:.8,on:.5,lvl:.7,fed:.6,vix:1}},
+  {id:"lon",name:"London",time:"02:00–08:30",start:2*60,end:8*60+30,w:{yld:1,dxy:1.2,on:.8,lvl:.8,fed:.7,vix:.9}},
+  {id:"nyam",name:"NY AM",time:"09:30–12:00",start:9*60+30,end:12*60,w:{yld:1.2,dxy:.9,on:1.2,lvl:1.1,fed:1,vix:1}},
+  {id:"nypm",name:"NY PM",time:"13:30–16:00",start:13*60+30,end:16*60,w:{yld:1,dxy:.7,on:.6,lvl:1.2,fed:1.1,vix:1.1}}
+];
+const FACTORS=[
+  {id:"yld",name:"10-yr Treasury yield",hint:"Falling yields help Nasdaq",bull:"10-yr yields are easing",bear:"10-yr yields are climbing"},
+  {id:"dxy",name:"Dollar index (DXY)",hint:"Weaker dollar is risk-on",bull:"the dollar is softer",bear:"the dollar is firming"},
+  {id:"on",name:"Overnight NQ trend",hint:"Globex direction vs. prior close",bull:"NQ held gains overnight",bear:"NQ sold off overnight"},
+  {id:"lvl",name:"Price vs. prior-day range",hint:"Above PDH bullish, below PDL bearish",bull:"price is accepting above yesterday's range",bear:"price is trading below yesterday's range"},
+  {id:"fed",name:"Fed speakers / tone",hint:"Dovish commentary is bullish",bull:"Fed commentary leans dovish",bear:"Fed commentary leans hawkish"},
+  {id:"vix",name:"VIX & risk sentiment",hint:"Falling VIX is bullish",bull:"volatility is compressing",bear:"volatility is rising"}
+];
+const LABELS=["−2","−1","0","+1","+2"];
+const SAMPLE={vals:{yld:1,dxy:0,on:2,lvl:1,fed:-1,vix:1},onh:"21,486.25",onl:"21,302.50",event:false};
+const EXAMPLE_LOG=[
+  {d:"2026-10-16",s:"nyam",bias:"Bullish",conv:"Medium",res:"up",ex:1},
+  {d:"2026-10-19",s:"nyam",bias:"Bearish",conv:"Low",res:"up",ex:1},
+  {d:"2026-10-20",s:"lon",bias:"Neutral",conv:"Low",res:"flat",ex:1},
+  {d:"2026-10-20",s:"nyam",bias:"Bullish",conv:"High",res:"up",ex:1},
+  {d:"2026-10-21",s:"nypm",bias:"Bearish",conv:"Medium",res:"down",ex:1},
+  {d:"2026-10-22",s:"nyam",bias:"Bullish",conv:"Medium",res:"down",ex:1}
+];
+let AUTO={updated:"",date:"",vals:null,onh:"",onl:"",event:false,brief:"",calendar:[],sources:[]};
+const store={get(k,f){try{const v=localStorage.getItem(k);return v?JSON.parse(v):f}catch(e){return f}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
+let state=store.get("nqb-inputs",null)||JSON.parse(JSON.stringify(SAMPLE));
+let log=store.get("nqb-log",null)||EXAMPLE_LOG.slice();
+let selSess=null;
+const $=id=>document.getElementById(id);
+state.manual=state.manual||{};
+// Apply a newer pre-market update (data.json) over stored inputs
+function applyAuto(){
+  if(AUTO.updated&&state.basedOn!==AUTO.updated&&AUTO.vals){
+    state.vals=Object.assign({},state.vals,AUTO.vals);state.onh=AUTO.onh||state.onh;state.onl=AUTO.onl||state.onl;
+    state.event=!!AUTO.event;state.manual={};state.basedOn=AUTO.updated;
+    try{localStorage.setItem("nqb-inputs",JSON.stringify(state))}catch(e){}
+  }
+}
+async function loadAuto(){
+  try{const r=await fetch("data.json?t="+Date.now(),{cache:"no-store"});if(!r.ok)return;AUTO=await r.json();applyAuto();renderBrief();
+    if(!$("v-today").hidden)renderToday();if(!$("v-inputs").hidden)renderInputs()}catch(e){}
+}
+const LIVE={scores:{},q:{}};
+function val(id){return(!state.manual[id]&&LIVE.scores[id]!=null)?LIVE.scores[id]:(state.vals[id]||0)}
+function srcOf(id){if(!state.manual[id]&&LIVE.scores[id]!=null)return"live";if(state.manual[id])return"man";if(AUTO.updated&&AUTO.vals&&AUTO.vals[id]!=null)return"am";return""}
+const TAG={live:'<span class="tag">Live</span>',man:'<span class="tag man">Manual</span>',am:'<span class="tag am">Pre-mkt</span>',"":""};
+
+function nyNow(){
+  const p=new Intl.DateTimeFormat("en-US",{timeZone:"America/New_York",hour:"2-digit",minute:"2-digit",hour12:false,weekday:"short",month:"short",day:"numeric",year:"numeric"}).formatToParts(new Date());
+  const g=t=>(p.find(x=>x.type===t)||{}).value;
+  let h=+g("hour");if(h===24)h=0;const m=+g("minute");
+  return{h,m,mins:h*60+m,label:`${String(h).padStart(2,"0")}:${String(m).padStart(2,"0")}`,date:`${g("weekday")}, ${g("month")} ${g("day")}, ${g("year")}`,wd:g("weekday")};
+}
+function inSess(s,mins){return s.start<s.end?mins>=s.start&&mins<s.end:(mins>=s.start||mins<s.end)}
+function activeSess(){const n=nyNow();return SESSIONS.find(s=>inSess(s,n.mins))}
+
+function compute(s){
+  let sum=0,max=0;const parts=[];
+  FACTORS.forEach(f=>{const v=val(f.id),w=s.w[f.id];sum+=v*w;max+=2*w;parts.push({f,v,c:v*w})});
+  const n=max?sum/max:0;
+  const bias=n>.15?"Bullish":n<-.15?"Bearish":"Neutral";
+  let lvl=Math.abs(n)>.5?2:Math.abs(n)>.3?1:0;
+  if(state.event)lvl=Math.max(0,lvl-1);
+  return{n,bias,conv:["Low","Medium","High"][lvl],parts};
+}
+
+function renderTabs(){
+  const act=activeSess();
+  $("sessTabs").innerHTML=SESSIONS.map(s=>`<button class="tab" role="tab" id="tab-${s.id}" aria-selected="${s.id===selSess}" data-s="${s.id}"><span class="n">${s.name}</span><span class="t">${s.time}</span>${act&&act.id===s.id?'<span class="live" aria-label="Live"></span>':""}</button>`).join("");
+  const st=$("sessStatus"),sel=SESSIONS.find(s=>s.id===selSess);
+  if(act&&act.id===selSess){st.className="status";st.textContent=`${sel.name} in progress`}
+  else{st.className="status off";st.textContent=act?`${act.name} live · viewing ${sel.name}`:`Between sessions · viewing ${sel.name}`}
+}
+
+function renderToday(){
+  const s=SESSIONS.find(x=>x.id===selSess),r=compute(s);
+  const col=r.bias==="Bullish"?"var(--bull)":r.bias==="Bearish"?"var(--bear)":"var(--flat)";
+  $("biasCard").style.setProperty("--c",col);
+  $("biasEyebrow").textContent=`${s.name} outlook · NQ & ES · ${s.time} ET`;
+  $("biasArrow").textContent=r.bias==="Bullish"?"↗":r.bias==="Bearish"?"↘":"→";
+  $("biasWord").textContent=r.bias;
+  const sc=Math.round(r.n*100);
+  $("scoreTxt").textContent=(sc>0?"+":"")+sc;
+  $("meterPin").style.left=`${50+r.n*50}%`;
+  $("convChip").textContent=`${r.conv} conviction`;
+  $("eventChip").hidden=!state.event;
+  const sorted=r.parts.filter(p=>p.v!==0).sort((a,b)=>Math.abs(b.c)-Math.abs(a.c));
+  const sup=sorted.filter(p=>Math.sign(p.c)===Math.sign(r.n)||r.bias==="Neutral").slice(0,2);
+  const opp=sorted.filter(p=>Math.sign(p.c)!==Math.sign(r.n)&&r.bias!=="Neutral")[0];
+  const say=p=>p.v>0?p.f.bull:p.f.bear;
+  let why;
+  if(!sorted.length)why="No factors are scored yet. Open Inputs and rate this morning's drivers.";
+  else if(r.bias==="Neutral")why=`Signals are mixed for ${s.name}: ${sup.map(say).join(", while ")}. No clear edge, so wait for price to pick a side.`;
+  else why=`The ${s.name} lean is ${r.bias.toLowerCase()} because ${sup.map(say).join(" and ")}.`+(opp?` Against that, ${say(opp)}.`:"")+(state.event?" A scheduled release can override this, so size down into the number.":"");
+  $("whyTxt").textContent=why;
+  $("evList").innerHTML=r.parts.slice().sort((a,b)=>Math.abs(b.c)-Math.abs(a.c)).map(p=>{
+    const c=Math.round(p.c*10)/10,cls=c>0?"pos":c<0?"neg":"zero";
+    return`<div class="ev-row"><span class="ev-name">${p.f.name}${TAG[srcOf(p.f.id)]}</span><span class="ev-val ${cls}">${c>0?"+":""}${c.toFixed(1)}</span></div>`}).join("");
+  const risks=[];
+  if(state.onh&&state.onl)risks.push(`A break of the overnight ${r.bias==="Bearish"?"high "+state.onh:"low "+state.onl} would invalidate the lean.`);
+  if(opp)risks.push(`${opp.f.name} is pulling the other way.`);
+  if(state.event)risks.push("High-impact data today. Expect a fast two-sided move around the release.");
+  if(r.conv==="Low")risks.push("Low conviction. Treat this as context, not a trade signal.");
+  risks.push("This is a rules-based score of your own inputs, not a forecast.");
+  $("riskList").innerHTML=risks.map(x=>`<li>${x}</li>`).join("");
+}
+
+function renderInputs(){
+  $("factorList").innerHTML=FACTORS.map(f=>{const cur=val(f.id),src=srcOf(f.id);
+  const back=state.manual[f.id]&&LIVE.scores[f.id]!=null?` <button class="linkbtn" data-live="${f.id}">Use live</button>`:"";
+  return`<div class="factor"><div class="factor-h"><span>${f.name}${TAG[src]}${back}</span><small>${f.hint}</small></div>
+  <div class="seg" role="group" aria-label="${f.name}">${[-2,-1,0,1,2].map((v,i)=>`<button type="button" data-f="${f.id}" data-v="${v}" aria-pressed="${cur===v}">${LABELS[i]}</button>`).join("")}</div></div>`}).join("");
+  $("onh").value=state.onh||"";$("onl").value=state.onl||"";$("eventRisk").checked=!!state.event;
+}
+
+function grade(e){if(!e.res)return null;return(e.bias==="Bullish"&&e.res==="up")||(e.bias==="Bearish"&&e.res==="down")||(e.bias==="Neutral"&&e.res==="flat")}
+function renderRecord(){
+  const g=log.filter(e=>e.res),hits=g.filter(grade).length;
+  const hc=g.filter(e=>e.conv!=="Low"),hch=hc.filter(grade).length;
+  $("stHit").textContent=g.length?Math.round(hits/g.length*100)+"%":"–";
+  $("stHigh").textContent=hc.length?Math.round(hch/hc.length*100)+"%":"–";
+  $("stN").textContent=g.length;
+  if(!log.length){$("logList").innerHTML='<p class="note">No calls logged yet. Use “Log this call” on the Today tab.</p>';return}
+  $("logList").innerHTML=log.map((e,i)=>({e,i})).reverse().map(({e,i})=>{
+    const s=SESSIONS.find(x=>x.id===e.s),gr=grade(e);
+    const mk=gr===null?'<span class="mark open">open</span>':gr?'<span class="mark hit">hit</span>':'<span class="mark miss">miss</span>';
+    return`<div class="log-row"><span class="log-date">${e.d.slice(5).replace("-","/")}<br>${s?s.name:""}</span>
+    <span>${e.bias} · ${e.conv}${e.ex?'<span class="ex">example</span>':""}<br>
+    <select id="res-${i}" data-i="${i}" aria-label="Session result"><option value="">Result…</option><option value="up"${e.res==="up"?" selected":""}>Up</option><option value="down"${e.res==="down"?" selected":""}>Down</option><option value="flat"${e.res==="flat"?" selected":""}>Flat</option></select></span>${mk}</div>`}).join("");
+}
+
+function go(v){
+  ["today","inputs","record"].forEach(x=>$("v-"+x).hidden=x!==v);
+  document.querySelectorAll(".nav button").forEach(b=>{if(b.dataset.go===v)b.setAttribute("aria-current","page");else b.removeAttribute("aria-current")});
+  if(v==="today"){renderTabs();renderToday()}if(v==="inputs")renderInputs();if(v==="record")renderRecord();
+  window.scrollTo(0,0);
+}
+function toast(t){const el=$("toast");el.textContent=t;el.hidden=false;clearTimeout(toast._t);toast._t=setTimeout(()=>el.hidden=true,1800)}
+function save(){store.set("nqb-inputs",state)}
+
+document.addEventListener("click",e=>{
+  const g=e.target.closest("[data-go]");if(g){go(g.dataset.go);return}
+  const t=e.target.closest(".tab");if(t){selSess=t.dataset.s;renderTabs();renderToday();return}
+  const lb=e.target.closest("[data-live]");if(lb){delete state.manual[lb.dataset.live];save();renderInputs();return}
+  const sb=e.target.closest(".seg button");if(sb){const f=sb.dataset.f;state.vals[f]=+sb.dataset.v;if(LIVE.scores[f]!=null||srcOf(f)==="am")state.manual[f]=true;save();renderInputs();return}
+});
+$("eventRisk").addEventListener("change",e=>{state.event=e.target.checked;save()});
+["onh","onl"].forEach(id=>$(id).addEventListener("input",e=>{state[id]=e.target.value.trim();save()}));
+$("resetBtn").addEventListener("click",()=>{
+  if(AUTO.vals){state={vals:Object.assign({},AUTO.vals),onh:AUTO.onh,onl:AUTO.onl,event:!!AUTO.event,manual:{},basedOn:AUTO.updated};toast("Pre-market inputs restored")}
+  else{state=JSON.parse(JSON.stringify(SAMPLE));state.manual={};toast("Sample inputs restored")}
+  save();renderInputs()});
+$("logBtn").addEventListener("click",()=>{
+  const s=SESSIONS.find(x=>x.id===selSess),r=compute(s);
+  const d=new Intl.DateTimeFormat("en-CA",{timeZone:"America/New_York"}).format(new Date());
+  log.push({d,s:s.id,bias:r.bias,conv:r.conv,res:""});store.set("nqb-log",log);toast(`Logged ${s.name}: ${r.bias}`);
+});
+document.addEventListener("change",e=>{if(e.target.matches("select[data-i]")){log[+e.target.dataset.i].res=e.target.value;store.set("nqb-log",log);renderRecord()}});
+$("clearEx").addEventListener("click",()=>{log=log.filter(e=>!e.ex);store.set("nqb-log",log);renderRecord();toast("Example rows removed")});
+
+function esc(s){return String(s==null?"":s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]))}
+function renderBrief(){
+  $("briefCard").hidden=false;
+  if(!AUTO.updated){
+    $("briefMeta").textContent="Waiting for first update";
+    $("briefTxt").textContent="Loading this morning's update. It refreshes every weekday at 8:45 and 9:20 a.m. New York time.";
+    $("calWrap").hidden=true;$("srcList").textContent="";return}
+  $("briefMeta").textContent=`Pre-market update · ${AUTO.updated}`;
+  $("briefTxt").textContent=AUTO.brief||"";
+  $("calWrap").hidden=!(AUTO.calendar&&AUTO.calendar.length);
+  $("calList").innerHTML=(AUTO.calendar||[]).map(c=>`<li><span style="font-family:var(--mono)">${esc(c.time)}</span> ${esc(c.event)}${c.impact==="high"?' <span class="tag man">High</span>':""}</li>`).join("");
+  $("srcList").innerHTML=(AUTO.sources||[]).length?"Sources: "+AUTO.sources.map(s=>`<a href="${esc(s.url)}" target="_blank" rel="noopener" style="color:var(--accent)">${esc(s.title)}</a>`).join(" · "):"";
+}
+
+/* ---------- Live data straight from FMP (key stays on this device) ---------- */
+const fmt=(n,d)=>n==null||isNaN(n)?"–":Number(n).toFixed(d);
+const sgn=(n,d,suf)=>n==null||isNaN(n)?"":(n>0?"+":"")+Number(n).toFixed(d)+(suf||"");
+function setMsg(t){$("liveMsg").textContent=t}
+function band(x,a,b){return x<=-b?2:x<=-a?1:x>=b?-2:x>=a?-1:0} // falling = bullish
+function rescore(){
+  const q=LIVE.q,s=LIVE.scores;
+  if(q.vix){s.vix=band(q.vix.changePercentage,2,5);$("tVix").textContent=fmt(q.vix.price,2);setChg("tVixC",q.vix.changePercentage,2,"%")}else{delete s.vix;$("tVix").textContent="–";$("tVixC").textContent=""}
+  if(q.ndq){$("tNdq").textContent=Number(q.ndq.price).toLocaleString("en-US",{minimumFractionDigits:2,maximumFractionDigits:2});
+    const el=$("tNdqC");el.textContent=`${sgn(q.ndq.changePercentage,2,"%")}  ·  day ${fmt(q.ndq.dayLow,0)}–${fmt(q.ndq.dayHigh,0)}`;el.className="tc "+(q.ndq.changePercentage>0?"pos":q.ndq.changePercentage<0?"neg":"zero")}
+  else{$("tNdq").textContent="–";$("tNdqC").textContent=""}
+  const parts=[];if(q.eur)parts.push(-q.eur.changePercentage);if(q.jpy)parts.push(q.jpy.changePercentage);
+  if(parts.length){const d=parts.reduce((a,b)=>a+b,0)/parts.length;s.dxy=band(d,.1,.3)}else delete s.dxy;
+  if(q.eur){$("tEur").textContent=fmt(q.eur.price,4);setChg("tEurC",q.eur.changePercentage,2,"%")}else{$("tEur").textContent="–";$("tEurC").textContent=""}
+  if(q.jpy){$("tJpy").textContent=fmt(q.jpy.price,2);setChg("tJpyC",q.jpy.changePercentage,2,"%")}else{$("tJpy").textContent="–";$("tJpyC").textContent=""}
+  if(q.yld&&q.yld.length>1){const r=q.yld.slice().sort((a,b)=>a.date<b.date?1:-1),bp=(r[0].year10-r[1].year10)*100;
+    s.yld=band(bp,2,5);$("tYld").textContent=fmt(r[0].year10,2)+"%";setChg("tYldC",bp,0," bp");$("tYldC").title="Daily close "+r[0].date}
+  else{delete s.yld;$("tYld").textContent="–";$("tYldC").textContent=""}
+  if(!$("v-today").hidden)renderToday();if(!$("v-inputs").hidden)renderInputs();
+}
+function setChg(id,v,d,suf){const el=$(id);el.textContent=sgn(v,d,suf);el.className="tc "+(v>0?"pos":v<0?"neg":"zero");if(id==="tVixC"||id==="tYldC"||id==="tJpyC")el.className="tc "+(v>0?"neg":v<0?"pos":"zero")}
+
+const FMP="https://financialmodelingprep.com/stable/";
+const KEY_NAME="amb-fmp-key";
+function getKey(){try{return localStorage.getItem(KEY_NAME)||""}catch(e){return""}}
+function setKey(k){try{k?localStorage.setItem(KEY_NAME,k):localStorage.removeItem(KEY_NAME)}catch(e){}}
+const QUOTES={ndq:"^IXIC",vix:"^VIX",eur:"EURUSD",jpy:"USDJPY"};
+let lastFetch=0,busy=false,yldDay="";
+async function fmpGet(path,params){
+  const u=new URL(FMP+path);Object.entries(params).forEach(([k,v])=>u.searchParams.set(k,v));u.searchParams.set("apikey",getKey());
+  let r;try{r=await fetch(u.toString())}catch(e){throw{code:"network"}}
+  if(r.status===401||r.status===403){let t="";try{t=await r.text()}catch(e){}throw{code:/plan|subscription|upgrade/i.test(t)?"plan":"auth"}}
+  if(r.status===429)throw{code:"limit"};
+  if(r.status===402)throw{code:"plan"};
+  if(!r.ok)throw{code:"http"};
+  const j=await r.json();
+  if(j&&!Array.isArray(j)&&j["Error Message"]){const m=j["Error Message"];throw{code:/limit/i.test(m)?"limit":/invalid api key/i.test(m)?"auth":"plan"}}
+  return j;
+}
+function marketHours(){const n=nyNow();return!["Sat","Sun"].includes(n.wd)&&n.mins>=8*60&&n.mins<16*60+15}
+async function refreshLive(force){
+  if(!getKey()){setMsg("Add your FMP key to see live prices");$("liveSetup").hidden=false;return}
+  $("liveSetup").hidden=true;
+  if(busy)return;if(!force&&Date.now()-lastFetch<4.5*60000)return;
+  busy=true;setMsg("Updating…");
+  const jobs=Object.entries(QUOTES).map(([k,sym])=>fmpGet("quote",{symbol:sym}).then(j=>{if(Array.isArray(j)&&j[0])LIVE.q[k]=j[0]}));
+  const today=new Intl.DateTimeFormat("en-CA",{timeZone:"America/New_York"}).format(new Date());
+  if(yldDay!==today||force)jobs.push(fmpGet("treasury-rates",{from:isoDaysAgo(10),to:today}).then(j=>{if(Array.isArray(j)&&j.length){LIVE.q.yld=j;yldDay=today}}));
+  const res=await Promise.allSettled(jobs);busy=false;lastFetch=Date.now();
+  const errs=res.filter(r=>r.status==="rejected").map(r=>r.reason&&r.reason.code);
+  rescore();
+  const t=new Intl.DateTimeFormat("en-US",{timeZone:"America/New_York",hour:"2-digit",minute:"2-digit",hour12:false}).format(new Date());
+  if(!errs.length)setMsg(`Updated ${t} ET`);
+  else if(errs.includes("auth")){setMsg("FMP didn't accept this key. Check it in Inputs.");$("liveSetup").hidden=false}
+  else if(errs.includes("limit"))setMsg("FMP daily limit reached (250 calls on the free plan)");
+  else if(errs.includes("network"))setMsg("No connection to FMP. Tap Refresh to try again.");
+  else if(errs.length===res.length)setMsg("FMP refused the request. Tap Refresh to try again.");
+  else setMsg(`Updated ${t} ET · some data not on your FMP plan`);
+}
+function isoDaysAgo(n){return new Intl.DateTimeFormat("en-CA",{timeZone:"America/New_York"}).format(new Date(Date.now()-n*864e5))}
+function startLive(){
+  refreshLive(true);
+  // Auto-refresh every 5 minutes, only on weekdays 8:00–16:15 ET while the page is open, to stay inside the free plan's daily limit
+  setInterval(()=>{if(!document.hidden&&marketHours())refreshLive(false)},5*60000);
+}
+$("liveRefresh").addEventListener("click",()=>refreshLive(true));
+function showKeyStatus(){const k=getKey();$("keyStatus").textContent=k?`Key saved on this device (ends ${k.slice(-4)}). Clear the box and tap Save to remove it.`:"No key saved yet."}
+$("saveKey").addEventListener("click",()=>{const k=$("fmpKey").value.trim();setKey(k);$("fmpKey").value="";showKeyStatus();toast(k?"Key saved":"Key removed");LIVE.q={};LIVE.scores={};rescore();refreshLive(true)});
+showKeyStatus();
+
+function tick(){const n=nyNow();$("nyTime").textContent=n.label;$("nyDate").textContent=n.date}
+const act=activeSess();selSess=act?act.id:"nyam";
+tick();renderTabs();renderBrief();renderToday();loadAuto();startLive();
+setInterval(()=>{tick();if(!$("v-today").hidden)renderTabs()},15000);
+setInterval(loadAuto,5*60000);
+document.addEventListener("visibilitychange",()=>{if(!document.hidden){loadAuto();refreshLive(false)}});
+</script>
+</body>
+</html>

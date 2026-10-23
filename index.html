@@ -235,7 +235,7 @@ select{font:inherit;font-size:13px;padding:5px 6px;border-radius:7px;border:1px 
 <script>
 const SESSIONS=[
   {id:"asia",name:"Asia",time:"18:00–02:00",start:18*60,end:2*60,w:{yld:.6,dxy:.8,on:.5,lvl:.7,fed:.6,vix:1}},
-  {id:"lon",name:"London",time:"02:00–08:30",start:2*60,end:8*60+30,w:{yld:1,dxy:1.2,on:.8,lvl:.8,fed:.7,vix:.9}},
+  {id:"preny",name:"Pre NY",time:"08:30–09:30",start:8*60+30,end:9*60+30,w:{yld:1.2,dxy:1,on:1.2,lvl:1.1,fed:.9,vix:.9}},
   {id:"nyam",name:"NY AM",time:"09:30–10:00",start:9*60+30,end:10*60,w:{yld:1.2,dxy:.9,on:1.2,lvl:1.1,fed:1,vix:1}},
   {id:"ny10",name:"NY 10AM",time:"10:00–12:00",start:10*60,end:12*60,w:{yld:1.1,dxy:.8,on:.8,lvl:1.2,fed:1,vix:1.1}}
 ];
@@ -283,8 +283,10 @@ const LIVE={scores:{},q:{}};
 function val(id){return(!state.manual[id]&&LIVE.scores[id]!=null)?LIVE.scores[id]:(state.vals[id]||0)}
 function srcOf(id){if(asiaOn()&&$("v-inputs").hidden)return"eve";if(!state.manual[id]&&LIVE.scores[id]!=null)return"live";if(state.manual[id])return"man";if(AUTO.updated&&AUTO.vals&&AUTO.vals[id]!=null)return"am";return""}
 const TAG={live:'<span class="tag">Live</span>',man:'<span class="tag man">Manual</span>',am:'<span class="tag am">Pre-mkt</span>',eve:'<span class="tag am">Evening</span>',"":""};
-const evOn=()=>asiaOn()?!!ASIA.event:!!state.event;
+const evOn=()=>asiaOn()?!!ASIA.event:selSess==="preny"?preRed().length>0:!!state.event;
 
+// Pre NY only gives a call on days with USD red folder news between 8:00 and 9:29 am New York (from the morning read's calendar)
+function preRed(){const today=new Intl.DateTimeFormat("en-CA",{timeZone:"America/New_York"}).format(new Date());if(!AUTO||AUTO.date!==today)return[];return(AUTO.calendar||[]).filter(c=>{const m=/^(\d{1,2}):(\d{2})/.exec(String(c.time||""));const t=m?+m[1]*60+ +m[2]:-1;return c.impact==="high"&&t>=480&&t<570})}
 function nyNow(){
   const p=new Intl.DateTimeFormat("en-US",{timeZone:"America/New_York",hour:"2-digit",minute:"2-digit",hour12:false,weekday:"short",month:"short",day:"numeric",year:"numeric"}).formatToParts(new Date());
   const g=t=>(p.find(x=>x.type===t)||{}).value;
@@ -314,9 +316,11 @@ function renderTabs(){
 
 function renderToday(){
   const s=SESSIONS.find(x=>x.id===selSess),r=compute(s);
+  if(selSess==="preny"&&!preRed().length){$("biasCard").style.setProperty("--c","var(--muted)");$("biasEyebrow").textContent=`Pre NY · ${s.time} ET`;$("biasArrow").textContent="";$("biasWord").textContent="No call today";$("scoreTxt").textContent="–";$("meterPin").style.left="50%";$("convChip").textContent="Red folder days only";$("eventChip").hidden=true;$("whyTxt").textContent="Pre NY only gives a bias on days with USD red folder news before the 9:30 open. There's none today, so look to the NY AM bias.";$("evList").innerHTML="";$("riskList").innerHTML="";return}
   const col=r.bias==="Bullish"?"var(--bull)":r.bias==="Bearish"?"var(--bear)":"var(--flat)";
   $("biasCard").style.setProperty("--c",col);
   $("biasEyebrow").textContent=`${s.name} outlook · NQ & ES · ${s.time} ET`;
+  if(selSess==="preny")$("biasEyebrow").textContent=`Pre NY · red folder ${preRed().map(c=>c.time+" "+c.event).join(" · ")} (New York time)`;
   $("biasArrow").textContent=r.bias==="Bullish"?"↗":r.bias==="Bearish"?"↘":"→";
   $("biasWord").textContent=r.bias;
   const sc=Math.round(r.n*100);

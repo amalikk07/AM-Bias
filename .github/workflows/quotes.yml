@@ -5,6 +5,9 @@ on:
     # Every 15 minutes, weekdays, 12:00–20:59 UTC (about 7 a.m.–4 p.m. New York time)
     - cron: "*/15 12-20 * * 1-5"
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ["scripts/fetch_quotes.py", ".github/workflows/quotes.yml"]
 
 permissions:
   contents: write
@@ -18,7 +21,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - name: Fetch quotes from FMP
         env:
           FMP_API_KEY: ${{ secrets.FMP_API_KEY }}

@@ -1,10 +1,16 @@
 """Fetch live market quotes from FMP into quotes.json for everyone who opens the site.
 Runs in GitHub Actions; the key comes from the FMP_API_KEY repository secret."""
-import json, os, sys, urllib.request, urllib.parse, datetime
+import json, os, sys, urllib.request, urllib.parse, urllib.error, datetime
 
 KEY = os.environ.get("FMP_API_KEY", "").strip()
+
+def fail(msg):
+    # ::error:: lines show up as annotations on the run, without exposing the key
+    print("::error::" + msg.replace(KEY, "***") if KEY else "::error::" + msg)
+    sys.exit(1)
+
 if not KEY:
-    sys.exit("FMP_API_KEY secret is not set")
+    fail("FMP_API_KEY secret is missing or empty. Add it under Settings > Secrets and variables > Actions.")
 BASE = "https://financialmodelingprep.com/stable/"
 QUOTES = {"ndq": "^IXIC", "vix": "^VIX", "eur": "EURUSD", "jpy": "USDJPY"}
 KEEP = ["symbol", "price", "changePercentage", "change", "dayLow", "dayHigh", "previousClose", "timestamp"]
@@ -12,8 +18,12 @@ KEEP = ["symbol", "price", "changePercentage", "change", "dayLow", "dayHigh", "p
 def get(path, **params):
     params["apikey"] = KEY
     url = BASE + path + "?" + urllib.parse.urlencode(params)
-    with urllib.request.urlopen(url, timeout=20) as r:
-        return json.load(r)
+    try:
+        with urllib.request.urlopen(url, timeout=20) as r:
+            return json.load(r)
+    except urllib.error.HTTPError as e:
+        body = e.read().decode("utf-8", "replace")[:200]
+        raise RuntimeError(f"HTTP {e.code} {body}".replace(KEY, "***"))
 
 try:
     old = json.load(open("quotes.json"))
@@ -45,8 +55,10 @@ if out["yldDay"] != today:
     except Exception as e:
         errors.append(f"treasury-rates: {e}")
 
+for e in errors:
+    print("::warning::" + e.replace(KEY, "***"))
 if not out["q"]:
-    sys.exit("No quotes fetched: " + "; ".join(errors))
+    fail("No quotes fetched: " + " | ".join(errors))
 # Only stamp a new time when prices actually moved, so off-hours runs don't create commits
 if out["q"] == old.get("q") and out["yld"] == old.get("yld"):
     print("No change")

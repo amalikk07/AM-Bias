@@ -1,0 +1,31 @@
+name: Notifications check
+
+# Asks the 1% site to send any phone notifications that are due
+# (red folder reminders and the NY AM bias). The site makes sure nothing is sent twice.
+on:
+  schedule:
+    # Every 5 minutes, weekdays, 11:00–21:59 UTC (covers the New York morning in both summer and winter time)
+    - cron: "*/5 11-21 * * 1-5"
+  workflow_dispatch:
+
+concurrency:
+  group: notify
+  cancel-in-progress: false
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - name: Call the site
+        env:
+          URL: ${{ secrets.PUSH_CRON_URL }}
+          KEY: ${{ secrets.CRON_SECRET }}
+        run: |
+          if [ -z "$URL" ] || [ -z "$KEY" ]; then
+            echo "::warning::Add the PUSH_CRON_URL and CRON_SECRET secrets to turn on notification alerts."
+            exit 0
+          fi
+          code=$(curl -sS -o out.json -w "%{http_code}" -H "Authorization: Bearer $KEY" "$URL" || echo 000)
+          echo "HTTP $code"; cat out.json; echo
+          if [ "$code" != "200" ]; then echo "::error::The site answered HTTP $code: $(head -c 300 out.json)"; exit 1; fi

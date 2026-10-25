@@ -258,7 +258,7 @@ const EXAMPLE_LOG=[
   {d:"2026-10-22",s:"nyam",bias:"Bullish",conv:"Medium",res:"down",ex:1}
 ];
 let AUTO={updated:"",date:"",vals:null,onh:"",onl:"",event:false,brief:"",calendar:[],sources:[]};
-let ASIA=null; // evening read for the Asia session (asia.json), written before the 11 pm UK rollover
+let ASIA=null; // evening read for the Asia session (asia.json), written before the 6 pm New York rollover
 const asiaOn=()=>selSess==="asia"&&!!(ASIA&&ASIA.vals&&Date.now()-Date.parse(ASIA.at||0)<30*3600e3);
 const store={get(k,f){try{const v=localStorage.getItem(k);return v?JSON.parse(v):f}catch(e){return f}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
 let state=store.get("nqb-inputs",null)||JSON.parse(JSON.stringify(SAMPLE));

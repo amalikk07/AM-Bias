@@ -1,12 +1,13 @@
 name: Rollover alert
 
-# Sends the "market rollover in 1 minute" notification at exactly 10:59 pm UK, Sunday–Thursday.
-# GitHub's scheduler can start jobs late, so this wakes ~40 minutes early and waits for 10:59.
-# Two start times cover UK summer time (BST) and winter time (GMT); the one that doesn't match exits.
+# Sends the "market rollover in 1 minute" notification at 5:59 pm New York (1 minute before CME futures reopen), Sunday–Thursday.
+# That is 10:59 pm UK most of the year, 9:59 pm UK in the weeks when US and UK clocks change on different dates.
+# GitHub's scheduler can start jobs late, so this wakes ~40 minutes early and waits for 5:59 pm New York.
+# Two start times cover US summer time (EDT) and winter time (EST); the one that doesn't match exits.
 on:
   schedule:
-    - cron: "20 21 * * 0-4"   # 10:20 pm BST
-    - cron: "20 22 * * 0-4"   # 10:20 pm GMT
+    - cron: "20 21 * * 0-4"   # 5:20 pm EDT
+    - cron: "20 22 * * 0-4"   # 5:20 pm EST
   workflow_dispatch:
 
 concurrency:
@@ -18,15 +19,15 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 90
     steps:
-      - name: Wait until 10:59 pm UK, then call the site
+      - name: Wait until 5:59 pm New York, then call the site
         env:
           URL: ${{ secrets.PUSH_CRON_URL }}
           KEY: ${{ secrets.CRON_SECRET }}
         run: |
           if [ -z "$URL" ] || [ -z "$KEY" ]; then echo "::warning::Add the PUSH_CRON_URL and CRON_SECRET secrets."; exit 0; fi
-          target=$(TZ=Europe/London date -d "today 22:59:05" +%s)
+          target=$(TZ=America/New_York date -d "today 17:59:05" +%s)
           now=$(date +%s); wait=$((target - now))
-          echo "Seconds until 10:59 pm UK: $wait"
+          echo "Seconds until 5:59 pm New York: $wait"
           if [ "$wait" -lt -60 ] || [ "$wait" -gt 5400 ]; then echo "Not this run's slot (other time zone or too late)."; exit 0; fi
           if [ "$wait" -gt 0 ]; then sleep "$wait"; fi
           code=$(curl -sS -o out.json -w "%{http_code}" -H "Authorization: Bearer $KEY" "$URL" || echo 000)

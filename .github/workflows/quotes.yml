@@ -2,8 +2,8 @@ name: Live quotes
 
 on:
   schedule:
-    # Every 15 minutes, weekdays, 12:00–20:59 UTC (about 7 a.m.–4 p.m. New York time)
-    - cron: "*/15 12-20 * * 1-5"
+    # Every 15 minutes, weekdays, 11:00–21:59 UTC (covers 7 a.m.–4 p.m. New York in both US summer and winter time)
+    - cron: "*/15 11-21 * * 1-5"
   workflow_dispatch:
   push:
     branches: [main]

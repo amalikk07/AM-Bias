@@ -1,17 +1,17 @@
 {
-  "updated": "Sun Oct 25 · 5:14 PM ET",
-  "date": "2026-10-25",
-  "at": "2026-10-25T21:14:00Z",
-  "vals": {"yld": -1, "dxy": 0, "on": -1, "lvl": 0, "fed": 0, "vix": -1},
+  "updated": "Mon Oct 26 · 5:14 PM ET",
+  "date": "2026-10-26",
+  "at": "2026-10-26T21:14:19Z",
+  "vals": {"yld": 0, "dxy": -2, "on": 2, "lvl": 0, "fed": 0, "vix": 2},
   "onh": "",
   "onl": "",
   "event": false,
-  "headline": "Tech slipped Friday as oil and yields rose; weekend Houthi claims of Saudi oil attacks add risk.",
-  "brief": "The Nasdaq Composite fell 0.2% Friday to 25,955, closing mid-range, as Brent hit a six-month high and the 10-year yield rose about 4 bp to near 5%. No major Asia data is scheduled tonight, so oil and Middle East headlines after unconfirmed Houthi claims of attacks on Saudi sites are the main driver into a week with the FOMC, BOJ and mega-cap earnings. Key risk is an oil spike at the reopen pushing yields higher.",
+  "headline": "Nasdaq rallied about 0.8% on Anthropic IPO buzz and VIX fell 5%, though the dollar firmed against the yen.",
+  "brief": "The Nasdaq Composite rose 0.8% to about 26,169, closing mid-range, as Anthropic IPO news revived the AI trade while the 10-year yield held near 5.00%. No BOJ decision or major China data falls in tonight's Asia session, so USD/JPY near 157.5 and positioning ahead of this week's FOMC, BOJ and mega-cap earnings are the main drivers. Key risk is a stronger dollar or rising yields fading the AI rally before the big events.",
   "calendar": [],
   "sources": [
-    {"title": "How major US stock indexes fared Friday 10/23/2026", "url": "https://finance.yahoo.com/markets/world-indices/articles/major-us-stock-indexes-fared-201458598.html"},
-    {"title": "Stock market today, Oct 23 (Yahoo live)", "url": "https://finance.yahoo.com/markets/live/stock-market-today-friday-october-23-dow-sp-500-nasdaq-tesla-meta-093000521.html"},
-    {"title": "Fundies Cheat Sheet, Oct 26–30, 2026", "url": "https://www.babypips.com/analysis/fundies-cheat-sheet-2026-10-26-fed-big-tech-oil-saudi"}
+    {"title": "Stock Market Today, Oct 26 (TheStreet)", "url": "https://www.thestreet.com/stock-market-today/stock-market-today-dow-jones-sp-500-nasdaq-updates-oct-26-2026"},
+    {"title": "Stock market today, Oct 26 (Yahoo live)", "url": "https://finance.yahoo.com/markets/live/stock-market-today-monday-october-26-dow-sp-500-nasdaq-101153035.html"},
+    {"title": "Futures rise ahead of Big Tech earnings and Fed (TipRanks)", "url": "https://www.tipranks.com/news/stock-market-today-oct-26-futures-rise-ahead-of-big-tech-earnings-and-feds-rate-decision"}
   ]
 }

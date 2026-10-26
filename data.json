@@ -1,42 +1,18 @@
 {
-  "updated": "Fri Oct 23 · 9:25 AM ET",
-  "date": "2026-10-23",
+  "updated": "Mon Oct 26 · 9:30 AM ET",
+  "date": "2026-10-26",
   "vals": {
-    "yld": -1,
-    "dxy": 0,
+    "yld": 0,
+    "dxy": -2,
     "on": 0,
     "lvl": 0,
     "fed": 0,
-    "vix": -1
+    "vix": 1
   },
   "onh": "",
   "onl": "",
   "event": false,
-  "brief": "Nasdaq 100 futures are roughly flat (about -0.03% near 29,135) after Thursday's 2.6% Nasdaq drop on AI-spending worries, with Dow futures weaker. The 10-year yield is a few bp higher near 4.95-4.98% after Thursday's sharp fall, VIX is up about 3% near 19.7, and Brent near $113 on Middle East tensions keeps inflation worries alive. Live FX and NQ overnight-range data were unavailable this run, so the dollar, overnight-trend and level factors are scored 0. Key risk is renewed tech de-risking into the 9:45 flash PMIs and 10:00 UMich sentiment, with the Fed in its pre-FOMC blackout.",
-  "calendar": [
-    {
-      "time": "9:45",
-      "event": "S&P Global flash manufacturing & services PMI (Oct)",
-      "impact": "medium"
-    },
-    {
-      "time": "10:00",
-      "event": "UMich consumer sentiment & inflation expectations (final Oct)",
-      "impact": "medium"
-    }
-  ],
-  "sources": [
-    {
-      "title": "Yahoo Finance live: futures slip after tech sell-off",
-      "url": "https://finance.yahoo.com/markets/live/stock-market-today-friday-october-23-dow-sp-500-nasdaq-tesla-meta-093000521.html"
-    },
-    {
-      "title": "Stocktwits: Nasdaq futures premarket",
-      "url": "https://stocktwits.com/news-articles/markets/equity/nasdaq-futures-slide-premarket-as-ai-spending-worries-resurface-oil-tops-112-on-iran-tensions-supply-concerns/cZxw43bRBwp"
-    },
-    {
-      "title": "Investrade weekly event calendar",
-      "url": "https://investrade.com/weekly-event-calendar-10-19-2026-10-23-2026/"
-    }
-  ]
+  "brief": "Stand-in read written late after the scheduled update missed. The dollar is firm (USD/JPY +0.4%, EUR/USD -0.2%), a headwind for NQ, while VIX is easing about 2%. Today's yields, NQ overnight move and Fed tone weren't available in time and are scored neutral.",
+  "calendar": [],
+  "sources": []
 }

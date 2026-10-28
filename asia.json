@@ -1,17 +1,18 @@
 {
-  "updated": "Tue Oct 27 · 5:16 PM ET",
-  "date": "2026-10-27",
-  "at": "2026-10-27T21:16:41Z",
-  "vals": {"yld": 0, "dxy": -2, "on": 2, "lvl": 1, "fed": 0, "vix": 1},
+  "updated": "Wed Oct 28 · 5:21 PM ET",
+  "date": "2026-10-28",
+  "at": "2026-10-28T21:21:03Z",
+  "vals": {"yld": -2, "dxy": 1, "on": 1, "lvl": 1, "fed": 0, "vix": 1},
   "onh": "",
   "onl": "",
-  "event": false,
-  "headline": "Nasdaq gained 1.2% as chips led a second day of Anthropic-driven AI buying, but the dollar firmed sharply.",
-  "brief": "The Nasdaq Composite rose 1.2% to about 26,478, closing in the upper third of its range, as semiconductors jumped over 3% and VIX fell to about 17.5 while the 10-year held near 4.99%. No BOJ decision or major China data falls in tonight's Asia session, and no mega-cap reported after the bell, so a stronger dollar (EUR/USD -0.5%, USD/JPY near 157.9) and positioning ahead of Wednesday's FOMC decision and Microsoft/Alphabet earnings are the main drivers. Key risk is a hawkish-pause repricing or dollar strength fading the AI rally before those events.",
+  "event": true,
+  "headline": "Nasdaq edged up after a Fed hold; Microsoft jumps after hours while Alphabet slips and BOJ decides tonight.",
+  "brief": "The Nasdaq closed about 0.3% higher near the top of its range after the Fed held rates 10-2, with two members voting for a hike, while the 10-year yield rose about 6 bp and VIX eased. Microsoft rose about 4% after hours on a beat while Alphabet dipped on negative free cash flow, leaving mega-cap signals mixed. The Bank of Japan decision during the Asia session and higher yields are the key risks.",
   "calendar": [],
   "sources": [
-    {"title": "Nasdaq rises 1.2% as Anthropic rally extends (Eurasia Business News)", "url": "https://eurasiabusinessnews.com/2026/10/27/stock-market-today-nasdaq-rises-1-2-as-anthropic-rally-extends-into-second-day/"},
-    {"title": "Stock market today, Oct 27 (Yahoo live)", "url": "https://finance.yahoo.com/markets/live/stock-market-today-tuesday-october-27-dow-sp-500-nasdaq-081901995.html"},
-    {"title": "Stock Market Today, Oct 27 (Yahoo Finance)", "url": "https://finance.yahoo.com/markets/stocks/articles/stock-market-today-oct-27-135043351.html"}
+    {"title": "Yahoo Finance: Fed holds rates in 10-2 vote", "url": "https://finance.yahoo.com/markets/live/stock-market-today-wednesday-october-28-dow-sp-500-nasdaq-fed-meeting-decision-080642111.html"},
+    {"title": "Investing.com: Microsoft up 4% after hours", "url": "https://www.investing.com/news/earnings/microsoft-stock-rises-over-4-after-hours-on-quarterly-results-beat-4980704"},
+    {"title": "Fortune: Alphabet stock drops after results", "url": "https://fortune.com/2026/10/28/alphabet-google-stock-drops-cloud-revenue-doubles-free-cash-flow-negative/"},
+    {"title": "StockTitan: Market today Oct 28", "url": "https://www.stocktitan.net/articles/stock-market-today-live-october-28-2026"}
   ]
 }

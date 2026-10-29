@@ -1,18 +1,18 @@
 {
-  "updated": "Wed Oct 28 · 5:21 PM ET",
-  "date": "2026-10-28",
-  "at": "2026-10-28T21:21:03Z",
-  "vals": {"yld": -2, "dxy": 1, "on": 1, "lvl": 1, "fed": 0, "vix": 1},
+  "updated": "Thu Oct 29 · 5:14 PM ET",
+  "date": "2026-10-29",
+  "at": "2026-10-29T21:14:24Z",
+  "vals": {"yld": 2, "dxy": 1, "on": -2, "lvl": -2, "fed": -2, "vix": 0},
   "onh": "",
   "onl": "",
   "event": true,
-  "headline": "Nasdaq edged up after a Fed hold; Microsoft jumps after hours while Alphabet slips and BOJ decides tonight.",
-  "brief": "The Nasdaq closed about 0.3% higher near the top of its range after the Fed held rates 10-2, with two members voting for a hike, while the 10-year yield rose about 6 bp and VIX eased. Microsoft rose about 4% after hours on a beat while Alphabet dipped on negative free cash flow, leaving mega-cap signals mixed. The Bank of Japan decision during the Asia session and higher yields are the key risks.",
+  "headline": "Nasdaq fell 1.4% below yesterday's low on Alphabet; Amazon and Intel slide after hours, BOJ decides tonight.",
+  "brief": "The Nasdaq closed about 1.4% lower, below the prior day's low, as Alphabet sank on negative free cash flow and a hot September PCE print lifted December hike odds, though the 10-year yield fell about 7 bp. Amazon dropped after hours on an EPS miss despite faster AWS growth, and Intel also slid, keeping pressure on mega-cap tech into the reopen. The Bank of Japan decision during the Asia session and further after-hours tech weakness are the key risks.",
   "calendar": [],
   "sources": [
-    {"title": "Yahoo Finance: Fed holds rates in 10-2 vote", "url": "https://finance.yahoo.com/markets/live/stock-market-today-wednesday-october-28-dow-sp-500-nasdaq-fed-meeting-decision-080642111.html"},
-    {"title": "Investing.com: Microsoft up 4% after hours", "url": "https://www.investing.com/news/earnings/microsoft-stock-rises-over-4-after-hours-on-quarterly-results-beat-4980704"},
-    {"title": "Fortune: Alphabet stock drops after results", "url": "https://fortune.com/2026/10/28/alphabet-google-stock-drops-cloud-revenue-doubles-free-cash-flow-negative/"},
-    {"title": "StockTitan: Market today Oct 28", "url": "https://www.stocktitan.net/articles/stock-market-today-live-october-28-2026"}
+    {"title": "Yahoo Finance: Nasdaq slips as Alphabet sinks", "url": "https://finance.yahoo.com/markets/live/stock-market-today-thursday-october-29-dow-sp-500-nasdaq-alphabet-microsoft-earnings-130305714.html"},
+    {"title": "Benzinga: Amazon Q3 double miss, shares drop", "url": "https://www.benzinga.com/markets/earnings/26/10/62719400/amazon-delivers-q3-double-miss-aws-growth-accelerates-shares-drop"},
+    {"title": "Upstox: PCE data lifts rate hike bets", "url": "https://upstox.com/news/market-news/us-stocks/nasdaq-tumbles-1-8-s-and-p-500-dow-jones-down-in-red-as-pce-inflation-data-increases-rate-hike-potential-alphabet-tech-stocks-in-focus/article-202664/"},
+    {"title": "FinanceCalendar: BOJ rate decision Oct 30", "url": "https://www.financecalendar.com/event/bank-of-japan-rate-decision-october-2026/"}
   ]
 }

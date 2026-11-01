@@ -1,18 +1,18 @@
 {
-  "updated": "Thu Oct 29 · 5:14 PM ET",
-  "date": "2026-10-29",
-  "at": "2026-10-29T21:14:24Z",
-  "vals": {"yld": 2, "dxy": 1, "on": -2, "lvl": -2, "fed": -2, "vix": 0},
+  "updated": "Sun Nov 1 · 5:16 PM ET",
+  "date": "2026-11-01",
+  "at": "2026-11-01T22:16:00Z",
+  "vals": {"yld": 1, "dxy": 0, "on": -2, "lvl": -2, "fed": -1, "vix": -2},
   "onh": "",
   "onl": "",
-  "event": true,
-  "headline": "Nasdaq fell 1.4% below yesterday's low on Alphabet; Amazon and Intel slide after hours, BOJ decides tonight.",
-  "brief": "The Nasdaq closed about 1.4% lower, below the prior day's low, as Alphabet sank on negative free cash flow and a hot September PCE print lifted December hike odds, though the 10-year yield fell about 7 bp. Amazon dropped after hours on an EPS miss despite faster AWS growth, and Intel also slid, keeping pressure on mega-cap tech into the reopen. The Bank of Japan decision during the Asia session and further after-hours tech weakness are the key risks.",
+  "event": false,
+  "headline": "Nasdaq 100 sank 3.5% Friday on Intel and Amazon AI-spending fears; VIX jumped 13% into the reopen.",
+  "brief": "The Nasdaq 100 fell about 3.5% on Friday to roughly 28,385, closing below Thursday's low after Intel's weak outlook and Amazon's miss sparked a chip-led selloff, while the 10-year yield eased about 4 bp to 4.94%. Tonight's Asia session has only second-tier data such as China's Caixin manufacturing PMI, so price follow-through from Friday's selloff is likely to dominate. Key risks this week are Apple and Palantir earnings, Tuesday's midterm elections and Friday's jobs report amid rising December hike odds.",
   "calendar": [],
   "sources": [
-    {"title": "Yahoo Finance: Nasdaq slips as Alphabet sinks", "url": "https://finance.yahoo.com/markets/live/stock-market-today-thursday-october-29-dow-sp-500-nasdaq-alphabet-microsoft-earnings-130305714.html"},
-    {"title": "Benzinga: Amazon Q3 double miss, shares drop", "url": "https://www.benzinga.com/markets/earnings/26/10/62719400/amazon-delivers-q3-double-miss-aws-growth-accelerates-shares-drop"},
-    {"title": "Upstox: PCE data lifts rate hike bets", "url": "https://upstox.com/news/market-news/us-stocks/nasdaq-tumbles-1-8-s-and-p-500-dow-jones-down-in-red-as-pce-inflation-data-increases-rate-hike-potential-alphabet-tech-stocks-in-focus/article-202664/"},
-    {"title": "FinanceCalendar: BOJ rate decision Oct 30", "url": "https://www.financecalendar.com/event/bank-of-japan-rate-decision-october-2026/"}
+    {"title": "Investopedia/Yahoo: Tech sell-off sends Nasdaq reeling", "url": "https://finance.yahoo.com/markets/stocks/articles/stock-market-today-nasdaq-p-123540419.html"},
+    {"title": "CappNotes: Closing Look Oct 30", "url": "https://cappnotes.substack.com/p/closing-look-friday-october-30-2026"},
+    {"title": "FXEmpire: Week ahead — AI earnings, midterms, jobs", "url": "https://www.fxempire.com/forecasts/article/the-week-ahead-ai-earnings-u-s-midterms-and-jobs-data-test-u-s-stocks-1641771"},
+    {"title": "Stocktwits: What to expect this week", "url": "https://stocktwits.com/news-articles/markets/equity/what-to-expect-markets-this-week-nov-1-2026/cNGes4VR923"}
   ]
 }

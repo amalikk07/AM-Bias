@@ -1,18 +1,18 @@
 {
-  "updated": "Sun Nov 1 · 5:16 PM ET",
-  "date": "2026-11-01",
-  "at": "2026-11-01T22:16:00Z",
-  "vals": {"yld": 1, "dxy": 0, "on": -2, "lvl": -2, "fed": -1, "vix": -2},
+  "updated": "Mon Nov 2 · 5:14 PM ET",
+  "date": "2026-11-02",
+  "at": "2026-11-02T22:14:00Z",
+  "vals": {"yld": 1, "dxy": 0, "on": -2, "lvl": -2, "fed": 1, "vix": -2},
   "onh": "",
   "onl": "",
-  "event": false,
-  "headline": "Nasdaq 100 sank 3.5% Friday on Intel and Amazon AI-spending fears; VIX jumped 13% into the reopen.",
-  "brief": "The Nasdaq 100 fell about 3.5% on Friday to roughly 28,385, closing below Thursday's low after Intel's weak outlook and Amazon's miss sparked a chip-led selloff, while the 10-year yield eased about 4 bp to 4.94%. Tonight's Asia session has only second-tier data such as China's Caixin manufacturing PMI, so price follow-through from Friday's selloff is likely to dominate. Key risks this week are Apple and Palantir earnings, Tuesday's midterm elections and Friday's jobs report amid rising December hike odds.",
+  "event": true,
+  "headline": "Tech sold off again and Nasdaq closed at its lows; Palantir's after-hours beat is a partial offset.",
+  "brief": "The Nasdaq Composite fell about 1.1% to near 25,164, closing at the session low and below Friday's low as tech weakness resumed, while VIX rose about 9% to 21 and the 10-year yield eased 3 bp to 4.91%. Palantir beat estimates and raised guidance after the bell, which may steady AI names early in the Asia session. The key risk is continued de-risking ahead of Tuesday's U.S. midterm elections, Apple earnings and Friday's jobs report.",
   "calendar": [],
   "sources": [
-    {"title": "Investopedia/Yahoo: Tech sell-off sends Nasdaq reeling", "url": "https://finance.yahoo.com/markets/stocks/articles/stock-market-today-nasdaq-p-123540419.html"},
-    {"title": "CappNotes: Closing Look Oct 30", "url": "https://cappnotes.substack.com/p/closing-look-friday-october-30-2026"},
-    {"title": "FXEmpire: Week ahead — AI earnings, midterms, jobs", "url": "https://www.fxempire.com/forecasts/article/the-week-ahead-ai-earnings-u-s-midterms-and-jobs-data-test-u-s-stocks-1641771"},
-    {"title": "Stocktwits: What to expect this week", "url": "https://stocktwits.com/news-articles/markets/equity/what-to-expect-markets-this-week-nov-1-2026/cNGes4VR923"}
+    {"title": "CNBC: Nasdaq starts November with 1% loss", "url": "https://www.cnbc.com/2026/11/01/stock-market-today-live-updates.html"},
+    {"title": "StockTitan: Tech pulls Nasdaq lower, Nov 2", "url": "https://www.stocktitan.net/articles/stock-market-today-live-november-2-2026"},
+    {"title": "Seeking Alpha: Palantir boosts forecast", "url": "https://seekingalpha.com/news/4662192-palantir-perks-up-as-it-boosts-full-year-forecast-after-stellar-q3-results"},
+    {"title": "Yahoo: Stock market today Nov 2", "url": "https://finance.yahoo.com/markets/stocks/articles/stock-market-today-nov-2-144446387.html"}
   ]
 }

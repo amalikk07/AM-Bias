@@ -1,18 +1,18 @@
 {
-  "updated": "Mon Nov 2 · 5:14 PM ET",
-  "date": "2026-11-02",
-  "at": "2026-11-02T22:14:00Z",
-  "vals": {"yld": 1, "dxy": 0, "on": -2, "lvl": -2, "fed": 1, "vix": -2},
+  "updated": "Tue Nov 3 · 5:20 PM ET",
+  "date": "2026-11-03",
+  "at": "2026-11-03T22:20:00Z",
+  "vals": {"yld": -1, "dxy": -1, "on": 2, "lvl": 0, "fed": 0, "vix": 0},
   "onh": "",
   "onl": "",
   "event": true,
-  "headline": "Tech sold off again and Nasdaq closed at its lows; Palantir's after-hours beat is a partial offset.",
-  "brief": "The Nasdaq Composite fell about 1.1% to near 25,164, closing at the session low and below Friday's low as tech weakness resumed, while VIX rose about 9% to 21 and the 10-year yield eased 3 bp to 4.91%. Palantir beat estimates and raised guidance after the bell, which may steady AI names early in the Asia session. The key risk is continued de-risking ahead of Tuesday's U.S. midterm elections, Apple earnings and Friday's jobs report.",
+  "headline": "Chips lifted Nasdaq, but rising yields, a firm dollar and midterm results tonight keep the lean neutral.",
+  "brief": "The Nasdaq Composite rose about 0.8% to near 25,372 and the Nasdaq-100 about 0.6% as chip stocks rebounded, closing mid-range, while the 10-year yield rose about 4 bp to 4.95% and USD/JPY firmed 0.5%. AMD and Super Micro report after the bell, and U.S. midterm election results arrive during the Asia session. The key risk is a market reaction to a possible Democratic sweep, which analysts flagged as a potential drag on stocks Wednesday.",
   "calendar": [],
   "sources": [
-    {"title": "CNBC: Nasdaq starts November with 1% loss", "url": "https://www.cnbc.com/2026/11/01/stock-market-today-live-updates.html"},
-    {"title": "StockTitan: Tech pulls Nasdaq lower, Nov 2", "url": "https://www.stocktitan.net/articles/stock-market-today-live-november-2-2026"},
-    {"title": "Seeking Alpha: Palantir boosts forecast", "url": "https://seekingalpha.com/news/4662192-palantir-perks-up-as-it-boosts-full-year-forecast-after-stellar-q3-results"},
-    {"title": "Yahoo: Stock market today Nov 2", "url": "https://finance.yahoo.com/markets/stocks/articles/stock-market-today-nov-2-144446387.html"}
+    {"title": "Yahoo: Chip stocks rally, focus on midterms", "url": "https://finance.yahoo.com/markets/live/stock-market-today-tuesday-november-3-dow-sp-500-nasdaq-midterms-amd-earnings-141143244.html"},
+    {"title": "StockTitan: Chip stocks lift the Nasdaq, Nov 3", "url": "https://www.stocktitan.net/articles/stock-market-today-live-november-3-2026"},
+    {"title": "CNBC: Stock market news for Nov. 3", "url": "https://www.cnbc.com/2026/11/02/stock-market-today-live-updates.html"},
+    {"title": "EconCurrents: Nov 3 market close", "url": "https://econcurrents.substack.com/p/03-november-2026-market-close-and"}
   ]
 }

@@ -1,18 +1,25 @@
 {
-  "updated": "Tue Nov 3 · 5:20 PM ET",
-  "date": "2026-11-03",
-  "at": "2026-11-03T22:20:00Z",
-  "vals": {"yld": -1, "dxy": -1, "on": 2, "lvl": 0, "fed": 0, "vix": 0},
+  "updated": "Wed Nov 4 · 5:13 PM ET",
+  "date": "2026-11-04",
+  "at": "2026-11-04T22:13:33Z",
+  "vals": {
+    "yld": 2,
+    "dxy": 1,
+    "on": 2,
+    "lvl": 0,
+    "fed": 0,
+    "vix": 2
+  },
   "onh": "",
   "onl": "",
-  "event": true,
-  "headline": "Chips lifted Nasdaq, but rising yields, a firm dollar and midterm results tonight keep the lean neutral.",
-  "brief": "The Nasdaq Composite rose about 0.8% to near 25,372 and the Nasdaq-100 about 0.6% as chip stocks rebounded, closing mid-range, while the 10-year yield rose about 4 bp to 4.95% and USD/JPY firmed 0.5%. AMD and Super Micro report after the bell, and U.S. midterm election results arrive during the Asia session. The key risk is a market reaction to a possible Democratic sweep, which analysts flagged as a potential drag on stocks Wednesday.",
+  "event": false,
+  "headline": "Relief rally after Democrats win Congress: VIX down 20%, 10-yr yield off 5bp, softer dollar.",
+  "brief": "Nasdaq rose about 1.4% as midterm results eased uncertainty, though it closed in the lower third of its range after fading from the high. Tonight's Asia session digests after-hours results from Qualcomm, Arm and AppLovin plus a sharp drop in oil. The key risk is renewed selling in AI data center and chip names, which weighed on Asian chip stocks on Wednesday.",
   "calendar": [],
   "sources": [
-    {"title": "Yahoo: Chip stocks rally, focus on midterms", "url": "https://finance.yahoo.com/markets/live/stock-market-today-tuesday-november-3-dow-sp-500-nasdaq-midterms-amd-earnings-141143244.html"},
-    {"title": "StockTitan: Chip stocks lift the Nasdaq, Nov 3", "url": "https://www.stocktitan.net/articles/stock-market-today-live-november-3-2026"},
-    {"title": "CNBC: Stock market news for Nov. 3", "url": "https://www.cnbc.com/2026/11/02/stock-market-today-live-updates.html"},
-    {"title": "EconCurrents: Nov 3 market close", "url": "https://econcurrents.substack.com/p/03-november-2026-market-close-and"}
+    {"title": "CNN: Dow best post-midterm day in 44 years", "url": "https://www.cnn.com/2026/11/04/investing/us-markets-midterm-elections"},
+    {"title": "Yahoo Finance: Wall Street ends higher after Democrats win Congress", "url": "https://finance.yahoo.com/markets/stocks/articles/us-stock-index-futures-steady-083456013.html"},
+    {"title": "StockTitan: Stock market today, Nov 4 2026", "url": "https://www.stocktitan.net/articles/stock-market-today-live-november-4-2026"},
+    {"title": "Investing.com: After-hours movers QCOM, APP", "url": "https://www.investing.com/news/stock-market-news/afterhours-movers-qcom-cohr-app-hubs-snap-fsly-fig-zg-bros-cde-432SI-5001535"}
   ]
 }

@@ -1,10 +1,10 @@
 {
-  "updated": "Thu Nov 5 · 3:05 PM ET",
+  "updated": "Thu Nov 5 · 5:13 PM ET",
   "date": "2026-11-05",
-  "at": "2026-11-05T20:03:48Z",
+  "at": "2026-11-05T22:13:20Z",
   "vals": {
     "yld": 2,
-    "dxy": 0,
+    "dxy": 1,
     "on": -2,
     "lvl": -2,
     "fed": 0,
@@ -13,11 +13,12 @@
   "onh": "",
   "onl": "",
   "event": false,
-  "headline": "AI chip rout: Nasdaq down about 5%, chip index off ~11%, VIX up over 50%. Yields lower, oil higher.",
-  "brief": "Nasdaq is down roughly 5% late in the session as the chip selloff deepened (Nvidia, Micron, AMD, Broadcom), erasing the post-midterm rally. Bonds rallied (10-yr near 4.83%) and gold firmed, a classic risk-off pattern. Tonight's Asia session opens into heavy pressure on Asian chip names after the Nikkei already fell sharply. Key risk for a bounce is short covering ahead of tomorrow's jobs report (NFP, 8:30 am New York / 1:30 pm UK).",
+  "headline": "AI chip rout: Nasdaq fell 5.5%, its worst day in 18 months, closing near the lows with VIX up about 70%.",
+  "brief": "The Nasdaq Composite fell about 5.5% to 24,315, closing near the session low and entering correction as AI chip and data-center stocks sold off (Nvidia -9%, QQQ -6.5%). Lower Treasury yields (10-yr 4.84%, down 6 bp) and a softer dollar cushion only partly, and Asian chip names led by Korea and Japan are the key read for tonight's session. The main risk is a short-covering bounce versus a further leg lower into tomorrow's 8:30 am New York jobs report.",
   "calendar": [],
   "sources": [
-    {"title": "Yahoo Finance: Nasdaq plunges amid chip stock wipeout", "url": "https://finance.yahoo.com/markets/live/stock-market-today-thursday-november-5-dow-sp-500-nasdaq-oil-rises-chip-stocks-141439950.html"},
-    {"title": "Thrive in Markets: next NFP release", "url": "https://thriveinmarkets.com/calendar/dates/nfp-2026/"}
+    {"title": "Kiplinger: Nasdaq plunges 1,421 points in tech rout", "url": "https://www.kiplinger.com/investing/stocks/nasdaq-plunges-1-421-points-in-massive-tech-rout-stock-market-today"},
+    {"title": "StockTitan: market closes sharply lower on AI chip selloff", "url": "https://www.stocktitan.net/articles/stock-market-today-live-november-5-2026"},
+    {"title": "Motley Fool: Nasdaq suffers worst day in 18 months", "url": "https://www.fool.com/coverage/stock-market-today/2026/11/05/stock-market-today-nov-5-nasdaq-suffers-worst-day-in-18-months-as-ai-trade-comes-under-fire/"}
   ]
 }

@@ -1,25 +1,23 @@
 {
-  "updated": "Wed Nov 4 · 5:13 PM ET",
-  "date": "2026-11-04",
-  "at": "2026-11-04T22:13:33Z",
+  "updated": "Thu Nov 5 · 3:05 PM ET",
+  "date": "2026-11-05",
+  "at": "2026-11-05T20:03:48Z",
   "vals": {
     "yld": 2,
-    "dxy": 1,
-    "on": 2,
-    "lvl": 0,
+    "dxy": 0,
+    "on": -2,
+    "lvl": -2,
     "fed": 0,
-    "vix": 2
+    "vix": -2
   },
   "onh": "",
   "onl": "",
   "event": false,
-  "headline": "Relief rally after Democrats win Congress: VIX down 20%, 10-yr yield off 5bp, softer dollar.",
-  "brief": "Nasdaq rose about 1.4% as midterm results eased uncertainty, though it closed in the lower third of its range after fading from the high. Tonight's Asia session digests after-hours results from Qualcomm, Arm and AppLovin plus a sharp drop in oil. The key risk is renewed selling in AI data center and chip names, which weighed on Asian chip stocks on Wednesday.",
+  "headline": "AI chip rout: Nasdaq down about 5%, chip index off ~11%, VIX up over 50%. Yields lower, oil higher.",
+  "brief": "Nasdaq is down roughly 5% late in the session as the chip selloff deepened (Nvidia, Micron, AMD, Broadcom), erasing the post-midterm rally. Bonds rallied (10-yr near 4.83%) and gold firmed, a classic risk-off pattern. Tonight's Asia session opens into heavy pressure on Asian chip names after the Nikkei already fell sharply. Key risk for a bounce is short covering ahead of tomorrow's jobs report (NFP, 8:30 am New York / 1:30 pm UK).",
   "calendar": [],
   "sources": [
-    {"title": "CNN: Dow best post-midterm day in 44 years", "url": "https://www.cnn.com/2026/11/04/investing/us-markets-midterm-elections"},
-    {"title": "Yahoo Finance: Wall Street ends higher after Democrats win Congress", "url": "https://finance.yahoo.com/markets/stocks/articles/us-stock-index-futures-steady-083456013.html"},
-    {"title": "StockTitan: Stock market today, Nov 4 2026", "url": "https://www.stocktitan.net/articles/stock-market-today-live-november-4-2026"},
-    {"title": "Investing.com: After-hours movers QCOM, APP", "url": "https://www.investing.com/news/stock-market-news/afterhours-movers-qcom-cohr-app-hubs-snap-fsly-fig-zg-bros-cde-432SI-5001535"}
+    {"title": "Yahoo Finance: Nasdaq plunges amid chip stock wipeout", "url": "https://finance.yahoo.com/markets/live/stock-market-today-thursday-november-5-dow-sp-500-nasdaq-oil-rises-chip-stocks-141439950.html"},
+    {"title": "Thrive in Markets: next NFP release", "url": "https://thriveinmarkets.com/calendar/dates/nfp-2026/"}
   ]
 }

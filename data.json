@@ -1,18 +1,24 @@
 {
-  "updated": "Mon Oct 26 · 9:30 AM ET",
-  "date": "2026-10-26",
+  "updated": "Thu Nov 5 · 3:05 PM ET",
+  "date": "2026-11-05",
   "vals": {
-    "yld": 0,
-    "dxy": -2,
-    "on": 0,
-    "lvl": 0,
+    "yld": 2,
+    "dxy": 1,
+    "on": -2,
+    "lvl": -2,
     "fed": 0,
-    "vix": 1
+    "vix": -2
   },
   "onh": "",
   "onl": "",
   "event": false,
-  "brief": "Stand-in read written late after the scheduled update missed. The dollar is firm (USD/JPY +0.4%, EUR/USD -0.2%), a headwind for NQ, while VIX is easing about 2%. Today's yields, NQ overnight move and Fed tone weren't available in time and are scored neutral.",
-  "calendar": [],
-  "sources": []
+  "brief": "Stand-in read written after the open. The AI chip selloff spread overnight (Nikkei sharply lower) and Nasdaq opened about 1.4% down, below yesterday's range, wiping out the post-midterm rally. VIX jumped more than 50%, its biggest one-day spike in over two years. Falling yields (10-yr near 4.83%) and a dollar near one-month lows help at the margin but don't offset the risk-off tape. Fed's Hammack and Barkin are on the calendar; no clear tone yet.",
+  "calendar": [
+    {"time": "8:30", "event": "Initial jobless claims", "impact": "high"},
+    {"time": "8:30", "event": "Q3 nonfarm productivity", "impact": "medium"}
+  ],
+  "sources": [
+    {"title": "Yahoo Finance: Nasdaq plunges amid chip stock wipeout", "url": "https://finance.yahoo.com/markets/live/stock-market-today-thursday-november-5-dow-sp-500-nasdaq-oil-rises-chip-stocks-141439950.html"},
+    {"title": "NordFX: Market Pulse, Nov 5 2026", "url": "https://nordfx.com/market-news/market-pulse-november-05-2026"}
+  ]
 }

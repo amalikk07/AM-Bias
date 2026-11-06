@@ -182,7 +182,7 @@ select{font:inherit;font-size:13px;padding:5px 6px;border-radius:7px;border:1px 
     <div>
       <div class="eyebrow">Morning prep</div>
       <h2 style="margin-top:4px">Score today's inputs</h2>
-      <p class="note">Rate each factor from strongly bearish (−2) to strongly bullish (+2) for NQ. Each session weighs them differently, so the same inputs can give a different call in Asia than in NY AM.</p>
+      <p class="note">Rate each factor from strongly bearish (−2) to strongly bullish (+2) for NQ. Each session weighs them differently, so the same inputs can give a different call in Asia than for the NY day.</p>
     </div>
     <article class="card" id="factorList"></article>
     <article class="card">
@@ -236,7 +236,7 @@ select{font:inherit;font-size:13px;padding:5px 6px;border-radius:7px;border:1px 
 const SESSIONS=[
   {id:"asia",name:"Asia",time:"18:00–02:00",start:18*60,end:2*60,w:{yld:.6,dxy:.8,on:.5,lvl:.7,fed:.6,vix:1}},
   {id:"preny",name:"Pre NY",time:"08:30–09:30",start:8*60+30,end:9*60+30,w:{yld:1.2,dxy:1,on:1.2,lvl:1.1,fed:.9,vix:.9}},
-  {id:"nyam",name:"NY AM",time:"09:30–10:00",start:9*60+30,end:10*60,w:{yld:1.2,dxy:.9,on:1.2,lvl:1.1,fed:1,vix:1}},
+  {id:"nyam",name:"NY Day",time:"09:30–16:00",start:9*60+30,end:16*60,w:{yld:1.2,dxy:.9,on:1.2,lvl:1.1,fed:1,vix:1}},
   {id:"ny10",name:"NY 10AM",time:"10:00–12:00",start:10*60,end:12*60,w:{yld:1.1,dxy:.8,on:.8,lvl:1.2,fed:1,vix:1.1}}
 ];
 const FACTORS=[
@@ -316,7 +316,7 @@ function renderTabs(){
 
 function renderToday(){
   const s=SESSIONS.find(x=>x.id===selSess),r=compute(s);
-  if(selSess==="preny"&&!preRed().length){$("biasCard").style.setProperty("--c","var(--muted)");$("biasEyebrow").textContent=`Pre NY · ${s.time} ET`;$("biasArrow").textContent="";$("biasWord").textContent="No call today";$("scoreTxt").textContent="–";$("meterPin").style.left="50%";$("convChip").textContent="Red folder days only";$("eventChip").hidden=true;$("whyTxt").textContent="Pre NY only gives a bias on days with USD red folder news before the 9:30 open. There's none today, so look to the NY AM bias.";$("evList").innerHTML="";$("riskList").innerHTML="";return}
+  if(selSess==="preny"&&!preRed().length){$("biasCard").style.setProperty("--c","var(--muted)");$("biasEyebrow").textContent=`Pre NY · ${s.time} ET`;$("biasArrow").textContent="";$("biasWord").textContent="No call today";$("scoreTxt").textContent="–";$("meterPin").style.left="50%";$("convChip").textContent="Red folder days only";$("eventChip").hidden=true;$("whyTxt").textContent="Pre NY only gives a bias on days with USD red folder news before the 9:30 open. There's none today, so look to the NY Day bias.";$("evList").innerHTML="";$("riskList").innerHTML="";return}
   const col=r.bias==="Bullish"?"var(--bull)":r.bias==="Bearish"?"var(--bear)":"var(--flat)";
   $("biasCard").style.setProperty("--c",col);
   $("biasEyebrow").textContent=`${s.name} outlook · NQ & ES · ${s.time} ET`;

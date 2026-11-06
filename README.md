@@ -1,6 +1,6 @@
 # AM Bias
 
-Session bias terminal for NQ/ES (Asia, London, NY AM, NY PM).
+Session bias terminal for NQ/ES (Asia, Pre NY, NY Day 9:30–16:00 New York, NY 10AM).
 
 - `index.html` – the app (open on iPhone in Safari → Share → Add to Home Screen).
 - `data.json` – the pre-market scores and brief, updated each weekday before the New York open.

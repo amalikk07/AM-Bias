@@ -1,11 +1,14 @@
 name: Notifications check
 
 # Asks the 1% site to send any phone notifications that are due
-# (red folder reminders and the NY AM bias). The site makes sure nothing is sent twice.
+# (red folder reminders, the NY AM bias and new lecture/breakdown videos). The site makes sure nothing is sent twice.
 on:
   schedule:
     # Every 5 minutes, weekdays, 11:00–21:59 UTC (covers the New York morning in both summer and winter time)
     - cron: "*/5 11-21 * * 1-5"
+    # Every 15 minutes the rest of the time (nights and weekends) so new videos are announced whenever they go up
+    - cron: "*/15 0-10,22-23 * * 1-5"
+    - cron: "*/15 * * * 0,6"
   workflow_dispatch:
 
 concurrency:

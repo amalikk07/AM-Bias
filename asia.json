@@ -1,24 +1,25 @@
 {
-  "updated": "Thu Nov 5 · 5:13 PM ET",
-  "date": "2026-11-05",
-  "at": "2026-11-05T22:13:20Z",
+  "updated": "Sun Nov 8 · 5:15 PM ET",
+  "date": "2026-11-08",
+  "at": "2026-11-08T22:15:00Z",
   "vals": {
-    "yld": 2,
-    "dxy": 1,
-    "on": -2,
-    "lvl": -2,
-    "fed": 0,
-    "vix": -2
+    "yld": -1,
+    "dxy": -2,
+    "on": 2,
+    "lvl": -1,
+    "fed": -1,
+    "vix": 2
   },
   "onh": "",
   "onl": "",
-  "event": false,
-  "headline": "AI chip rout: Nasdaq fell 5.5%, its worst day in 18 months, closing near the lows with VIX up about 70%.",
-  "brief": "The Nasdaq Composite fell about 5.5% to 24,315, closing near the session low and entering correction as AI chip and data-center stocks sold off (Nvidia -9%, QQQ -6.5%). Lower Treasury yields (10-yr 4.84%, down 6 bp) and a softer dollar cushion only partly, and Asian chip names led by Korea and Japan are the key read for tonight's session. The main risk is a short-covering bounce versus a further leg lower into tomorrow's 8:30 am New York jobs report.",
+  "event": true,
+  "headline": "Friday's tech bounce faded into the close as a hot jobs report lifted the dollar and December hike odds.",
+  "brief": "The Nasdaq-100 rose 1.35% to 26,990 on Friday after Thursday's 6.4% plunge, but finished in the lower part of its range as a strong 165,000 payrolls print pushed the 10-yr to 4.86%, the dollar up about 0.8% and December hike odds near 77%. Tonight's Asia session opens with China's October CPI and PPI, with Japanese and Korean chip names in focus after heavy losses last week. The key risk is that the rebound fails ahead of Tuesday's US CPI, with VIX still elevated near 25.6.",
   "calendar": [],
   "sources": [
-    {"title": "Kiplinger: Nasdaq plunges 1,421 points in tech rout", "url": "https://www.kiplinger.com/investing/stocks/nasdaq-plunges-1-421-points-in-massive-tech-rout-stock-market-today"},
-    {"title": "StockTitan: market closes sharply lower on AI chip selloff", "url": "https://www.stocktitan.net/articles/stock-market-today-live-november-5-2026"},
-    {"title": "Motley Fool: Nasdaq suffers worst day in 18 months", "url": "https://www.fool.com/coverage/stock-market-today/2026/11/05/stock-market-today-nov-5-nasdaq-suffers-worst-day-in-18-months-as-ai-trade-comes-under-fire/"}
+    {"title": "CappNotes: Closing Look, Nov 6, 2026", "url": "https://cappnotes.substack.com/p/closing-look-friday-november-6-2026"},
+    {"title": "CoinDesk: Nasdaq 100 futures rally live updates", "url": "https://www.coindesk.com/tech/2026/11/06/live-updates-nasdaq-100-futures-rally-points-to-stock-market-respite"},
+    {"title": "Topstep: Weekly Market Kickoff, Nov 8, 2026", "url": "https://www.topstep.com/blog/weekly-market-kickoff"},
+    {"title": "PalmaFutures: Sunday recap and week ahead", "url": "https://palmafutures.substack.com/p/sunday-post-recap-and-week-ahead-19f"}
   ]
 }

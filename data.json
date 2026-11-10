@@ -1,24 +1,26 @@
 {
-  "updated": "Thu Nov 5 · 3:05 PM ET",
-  "date": "2026-11-05",
+  "updated": "Tue Nov 10 · 11:21 AM ET",
+  "date": "2026-11-10",
   "vals": {
-    "yld": 2,
-    "dxy": 1,
+    "yld": -1,
+    "dxy": -2,
     "on": -2,
-    "lvl": -2,
-    "fed": 0,
-    "vix": -2
+    "lvl": 0,
+    "fed": -2,
+    "vix": -1
   },
   "onh": "",
   "onl": "",
-  "event": false,
-  "brief": "Stand-in read written after the open. The AI chip selloff spread overnight (Nikkei sharply lower) and Nasdaq opened about 1.4% down, below yesterday's range, wiping out the post-midterm rally. VIX jumped more than 50%, its biggest one-day spike in over two years. Falling yields (10-yr near 4.83%) and a dollar near one-month lows help at the margin but don't offset the risk-off tape. Fed's Hammack and Barkin are on the calendar; no clear tone yet.",
+  "event": true,
+  "brief": "Written late, after the open. October CPI came in hot (headline +0.4% m/m, core +0.3% vs ~0.2% expected), and Fed Governor Waller said a 50 bp December hike should be considered if core ran at 0.3% or higher. Nasdaq 100 futures slid about 1.2% before the open, the dollar is firmer and VIX is up near 20.7. The 1:00 pm 10-year note auction is the main session risk for yields; CoreWeave reports after the close.",
   "calendar": [
-    {"time": "8:30", "event": "Initial jobless claims", "impact": "high"},
-    {"time": "8:30", "event": "Q3 nonfarm productivity", "impact": "medium"}
+    {"time": "8:30", "event": "October CPI (hot: core +0.3% m/m)", "impact": "high"},
+    {"time": "9:00", "event": "Fed Gov. Waller speech (London) – open to 50 bp hike", "impact": "high"},
+    {"time": "1:00", "event": "$42B 10-year note auction", "impact": "medium"}
   ],
   "sources": [
-    {"title": "Yahoo Finance: Nasdaq plunges amid chip stock wipeout", "url": "https://finance.yahoo.com/markets/live/stock-market-today-thursday-november-5-dow-sp-500-nasdaq-oil-rises-chip-stocks-141439950.html"},
-    {"title": "NordFX: Market Pulse, Nov 5 2026", "url": "https://nordfx.com/market-news/market-pulse-november-05-2026"}
+    {"title": "StockTitan: Market today live, Nov 10", "url": "https://www.stocktitan.net/articles/stock-market-today-live-november-10-2026"},
+    {"title": "Hawksmoor: Waller puts 50 on the table", "url": "https://hawksmoorcapital.substack.com/p/daily-standup-nov-10"},
+    {"title": "Bloomberg: Futures mixed ahead of CPI", "url": "https://bloomberg.com/news/articles/2026-11-10/us-stock-futures-trade-mixed-with-focus-on-cpi-anthropic-ipo"}
   ]
 }

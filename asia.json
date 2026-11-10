@@ -1,24 +1,23 @@
 {
-  "updated": "Mon Nov 9 · 5:16 PM ET",
-  "date": "2026-11-09",
-  "at": "2026-11-09T22:16:00Z",
+  "updated": "Tue Nov 10 · 5:22 PM ET",
+  "date": "2026-11-10",
+  "at": "2026-11-10T22:22:00Z",
   "vals": {
-    "yld": -1,
-    "dxy": 2,
-    "on": 2,
-    "lvl": 1,
-    "fed": 0,
-    "vix": 2
+    "yld": -2,
+    "dxy": -2,
+    "on": -2,
+    "lvl": 0,
+    "fed": -2,
+    "vix": 1
   },
   "onh": "",
   "onl": "",
   "event": false,
-  "headline": "Tech rebounded sharply as oil slid, the dollar fell and VIX dropped 22%, despite Nvidia's 4% loss.",
-  "brief": "The Nasdaq Composite rallied 2.74% to 25,253 and QQQ gained 3.5%, closing near the day's high as chipmakers outside Nvidia led and falling oil broadened gains. The dollar weakened sharply against the euro and yen while VIX fell to about 19.9, though the 10-yr edged up to 4.88%. Asia-session catalysts look light tonight; the key risk is positioning into Tuesday's US CPI and further headlines on Nvidia's board investigation.",
+  "headline": "Hot October CPI and hawkish Fed talk pushed the 10-yr near 5% and the dollar up, weighing on tech.",
+  "brief": "The Nasdaq Composite fell 0.74% to 25,066 and QQQ lost 0.68%, closing mid-range after a hotter-than-expected October CPI and a 5.5% drop in Nvidia. The 10-yr rose about 10 bp to 4.98% and the dollar firmed against the euro and yen, while Waller and Logan both signaled support for further rate hikes; VIX eased to about 19.5. Asia-session catalysts look light tonight; the key risk is further repricing of Fed hike odds and CoreWeave's after-hours results.",
   "calendar": [],
   "sources": [
-    {"title": "Motley Fool: Stock Market Today, Nov 9", "url": "https://www.fool.com/coverage/stock-market-today/2026/11/09/stock-market-today-nov-9-markets-rally-as-semiconductor-gains-lift-nasdaq/"},
-    {"title": "StockTitan: Market live, Nov 9", "url": "https://www.stocktitan.net/articles/stock-market-today-live-november-9-2026"},
-    {"title": "CNBC: Stock market news Nov 9", "url": "https://www.cnbc.com/2026/11/08/stock-market-today-live-updates.html"}
+    {"title": "StockTitan: Stock Market Today, Nov 10", "url": "https://www.stocktitan.net/articles/stock-market-today-live-november-10-2026"},
+    {"title": "CNBC things to watch after CPI", "url": "https://www.marketalleys.com/post/cnbc-lists-10-things-to-watch-as-futures-fall-after-cpi-2026-11-10"}
   ]
 }

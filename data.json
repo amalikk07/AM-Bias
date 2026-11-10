@@ -2,7 +2,7 @@
   "updated": "Tue Nov 10 · 11:21 AM ET",
   "date": "2026-11-10",
   "vals": {
-    "yld": -1,
+    "yld": -2,
     "dxy": -2,
     "on": -2,
     "lvl": 0,
@@ -12,15 +12,36 @@
   "onh": "",
   "onl": "",
   "event": true,
-  "brief": "Written late, after the open. October CPI came in hot (headline +0.4% m/m, core +0.3% vs ~0.2% expected), and Fed Governor Waller said a 50 bp December hike should be considered if core ran at 0.3% or higher. Nasdaq 100 futures slid about 1.2% before the open, the dollar is firmer and VIX is up near 20.7. The 1:00 pm 10-year note auction is the main session risk for yields; CoreWeave reports after the close.",
+  "brief": "Written late, after the open. October CPI came in hot (headline +0.4% m/m, core +0.3% vs ~0.2% expected), sending the 10-yr yield up roughly 5-7 bp toward 4.93%, and Fed Governor Waller said a 50 bp December hike should be considered if core ran at 0.3% or higher. Nasdaq 100 futures slid about 1.2% before the open, the dollar is firmer and VIX is up near 20.7. The 1:00 pm 10-year note auction is the main session risk for yields; CoreWeave reports after the close.",
   "calendar": [
-    {"time": "8:30", "event": "October CPI (hot: core +0.3% m/m)", "impact": "high"},
-    {"time": "9:00", "event": "Fed Gov. Waller speech (London) – open to 50 bp hike", "impact": "high"},
-    {"time": "1:00", "event": "$42B 10-year note auction", "impact": "medium"}
+    {
+      "time": "8:30",
+      "event": "October CPI (hot: core +0.3% m/m)",
+      "impact": "high"
+    },
+    {
+      "time": "9:00",
+      "event": "Fed Gov. Waller speech (London) – open to 50 bp hike",
+      "impact": "high"
+    },
+    {
+      "time": "1:00",
+      "event": "$42B 10-year note auction",
+      "impact": "medium"
+    }
   ],
   "sources": [
-    {"title": "StockTitan: Market today live, Nov 10", "url": "https://www.stocktitan.net/articles/stock-market-today-live-november-10-2026"},
-    {"title": "Hawksmoor: Waller puts 50 on the table", "url": "https://hawksmoorcapital.substack.com/p/daily-standup-nov-10"},
-    {"title": "Bloomberg: Futures mixed ahead of CPI", "url": "https://bloomberg.com/news/articles/2026-11-10/us-stock-futures-trade-mixed-with-focus-on-cpi-anthropic-ipo"}
+    {
+      "title": "StockTitan: Market today live, Nov 10",
+      "url": "https://www.stocktitan.net/articles/stock-market-today-live-november-10-2026"
+    },
+    {
+      "title": "Hawksmoor: Waller puts 50 on the table",
+      "url": "https://hawksmoorcapital.substack.com/p/daily-standup-nov-10"
+    },
+    {
+      "title": "Bloomberg: Futures mixed ahead of CPI",
+      "url": "https://bloomberg.com/news/articles/2026-11-10/us-stock-futures-trade-mixed-with-focus-on-cpi-anthropic-ipo"
+    }
   ]
 }

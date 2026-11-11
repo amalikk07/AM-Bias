@@ -1,23 +1,23 @@
 {
-  "updated": "Tue Nov 10 · 5:22 PM ET",
-  "date": "2026-11-10",
-  "at": "2026-11-10T22:22:00Z",
+  "updated": "Wed Nov 11 · 5:16 PM ET",
+  "date": "2026-11-11",
+  "at": "2026-11-11T22:16:00Z",
   "vals": {
-    "yld": -2,
+    "yld": 0,
     "dxy": -2,
-    "on": -2,
+    "on": 2,
     "lvl": 0,
-    "fed": -2,
-    "vix": 1
+    "fed": 0,
+    "vix": 2
   },
   "onh": "",
   "onl": "",
   "event": false,
-  "headline": "Hot October CPI and hawkish Fed talk pushed the 10-yr near 5% and the dollar up, weighing on tech.",
-  "brief": "The Nasdaq Composite fell 0.74% to 25,066 and QQQ lost 0.68%, closing mid-range after a hotter-than-expected October CPI and a 5.5% drop in Nvidia. The 10-yr rose about 10 bp to 4.98% and the dollar firmed against the euro and yen, while Waller and Logan both signaled support for further rate hikes; VIX eased to about 19.5. Asia-session catalysts look light tonight; the key risk is further repricing of Fed hike odds and CoreWeave's after-hours results.",
+  "headline": "Tech rebounded on CoreWeave's beat and an Nvidia bounce, but a strong dollar tempers the lean.",
+  "brief": "The Nasdaq Composite rose 1.60% to 25,466, closing mid-range after CoreWeave's results lifted AI names and Nvidia gained about 5%; VIX fell about 10% to 17.5. Bond markets were shut for Veterans Day, while the dollar hit its strongest level since April 2025 as USD/JPY neared 160. Asia-session catalysts look light tonight; key risks are yen intervention talk, Fed-hike repricing and Nvidia headlines.",
   "calendar": [],
   "sources": [
-    {"title": "StockTitan: Stock Market Today, Nov 10", "url": "https://www.stocktitan.net/articles/stock-market-today-live-november-10-2026"},
-    {"title": "CNBC things to watch after CPI", "url": "https://www.marketalleys.com/post/cnbc-lists-10-things-to-watch-as-futures-fall-after-cpi-2026-11-10"}
+    {"title": "TheStreet: Stock Market Today, Nov 11", "url": "https://www.thestreet.com/stock-market-today/stock-market-today-dow-jones-sp-500-nasdaq-updates-nov-11-2026"},
+    {"title": "Investrade: Market Review, Nov 11", "url": "https://investrade.com/market-review-november-11-2026/"}
   ]
 }

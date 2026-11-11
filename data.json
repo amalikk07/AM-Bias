@@ -1,31 +1,15 @@
 {
-  "updated": "Wed Nov 11 · 8:00 AM ET",
+  "updated": "Wed Nov 11 · 9:24 AM ET",
   "date": "2026-11-11",
-  "vals": {
-    "yld": 0,
-    "dxy": -1,
-    "on": 2,
-    "lvl": 2,
-    "fed": 0,
-    "vix": 2
-  },
+  "vals": {"yld": 0, "dxy": -2, "on": 2, "lvl": 2, "fed": 0, "vix": 2},
   "onh": "",
   "onl": "",
   "event": false,
-  "brief": "Nasdaq 100 futures are up about 1.7% this morning after CoreWeave beat estimates and raised its outlook, lifting AI names after Tuesday's hot-CPI selloff. The US Treasury cash market is closed for Veterans Day, so the yield factor is scored 0; the 10-year closed Tuesday near 4.99% after an 11 bp jump. The dollar is firmer (EURUSD -0.28%, USDJPY +0.30%) and VIX is down about 5%. The level score is estimated from Tuesday's Nasdaq range because exact NQ high/low figures were not available. The key risk is renewed rate-hike pressure: markets fully price a December hike, and October PPI is due Friday.",
+  "brief": "Nasdaq 100 futures are up roughly 1.7% before the open as AI and chip names (Nvidia, AMD, Micron, CoreWeave) rebound from Tuesday's hot-CPI selloff, and VIX is down about 6%. The dollar is notably firmer (EURUSD -0.66%, USDJPY +0.55%), a headwind for tech. The Treasury cash market is closed for Veterans Day, so the yield factor is scored 0, but the 10-year closed Tuesday near 4.98% after a 10 bp jump. The key risk for the session is the rate backdrop: markets are pricing elevated odds of a December hike, and a gap this large can fade if yields or the dollar keep rising.",
   "calendar": [],
   "sources": [
-    {
-      "title": "Investing.com: Nasdaq futures jump on CoreWeave",
-      "url": "https://au.investing.com/news/stock-market-news/us-stock-futures-tick-higher-after-wall-st-slips-on-hot-cpi-nvidia-losses-4760262"
-    },
-    {
-      "title": "Saxo: Market Quick Take, Nov 11",
-      "url": "https://www.home.saxo/en-mena/content/articles/macro/market-quick-take---us-treasury-yields-rip-higher---11-november-2026-11112026"
-    },
-    {
-      "title": "NQ Wizard: NQ Trade Plan 11/11",
-      "url": "https://thenqmarketwizard.substack.com/p/nq-trade-plan-1111-6d0"
-    }
+    {"title": "Yahoo Finance: Stock market today, Nov 11", "url": "https://finance.yahoo.com/markets/live/stock-market-today-wednesday-november-11-dow-sp-500-nasdaq-nvidia-treasurys-123445799.html"},
+    {"title": "Stocktitan: Tech stocks rebound, Nov 11", "url": "https://www.stocktitan.net/articles/stock-market-today-live-november-11-2026"},
+    {"title": "TradingKey: US pre-market movers", "url": "https://www.tradingkey.com/analysis/stocks/us-stocks/262300663-coreweave-nvda-mu-amd-sndk-tradingkey"}
   ]
 }

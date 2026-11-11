@@ -1,47 +1,31 @@
 {
-  "updated": "Tue Nov 10 · 11:21 AM ET",
-  "date": "2026-11-10",
+  "updated": "Wed Nov 11 · 8:00 AM ET",
+  "date": "2026-11-11",
   "vals": {
-    "yld": -2,
-    "dxy": -2,
-    "on": -2,
-    "lvl": 0,
-    "fed": -2,
-    "vix": -1
+    "yld": 0,
+    "dxy": -1,
+    "on": 2,
+    "lvl": 2,
+    "fed": 0,
+    "vix": 2
   },
   "onh": "",
   "onl": "",
-  "event": true,
-  "brief": "Written late, after the open. October CPI came in hot (headline +0.4% m/m, core +0.3% vs ~0.2% expected), sending the 10-yr yield up roughly 5-7 bp toward 4.93%, and Fed Governor Waller said a 50 bp December hike should be considered if core ran at 0.3% or higher. Nasdaq 100 futures slid about 1.2% before the open, the dollar is firmer and VIX is up near 20.7. The 1:00 pm 10-year note auction is the main session risk for yields; CoreWeave reports after the close.",
-  "calendar": [
-    {
-      "time": "8:30",
-      "event": "October CPI (hot: core +0.3% m/m)",
-      "impact": "high"
-    },
-    {
-      "time": "9:00",
-      "event": "Fed Gov. Waller speech (London) – open to 50 bp hike",
-      "impact": "high"
-    },
-    {
-      "time": "1:00",
-      "event": "$42B 10-year note auction",
-      "impact": "medium"
-    }
-  ],
+  "event": false,
+  "brief": "Nasdaq 100 futures are up about 1.7% this morning after CoreWeave beat estimates and raised its outlook, lifting AI names after Tuesday's hot-CPI selloff. The US Treasury cash market is closed for Veterans Day, so the yield factor is scored 0; the 10-year closed Tuesday near 4.99% after an 11 bp jump. The dollar is firmer (EURUSD -0.28%, USDJPY +0.30%) and VIX is down about 5%. The level score is estimated from Tuesday's Nasdaq range because exact NQ high/low figures were not available. The key risk is renewed rate-hike pressure: markets fully price a December hike, and October PPI is due Friday.",
+  "calendar": [],
   "sources": [
     {
-      "title": "StockTitan: Market today live, Nov 10",
-      "url": "https://www.stocktitan.net/articles/stock-market-today-live-november-10-2026"
+      "title": "Investing.com: Nasdaq futures jump on CoreWeave",
+      "url": "https://au.investing.com/news/stock-market-news/us-stock-futures-tick-higher-after-wall-st-slips-on-hot-cpi-nvidia-losses-4760262"
     },
     {
-      "title": "Hawksmoor: Waller puts 50 on the table",
-      "url": "https://hawksmoorcapital.substack.com/p/daily-standup-nov-10"
+      "title": "Saxo: Market Quick Take, Nov 11",
+      "url": "https://www.home.saxo/en-mena/content/articles/macro/market-quick-take---us-treasury-yields-rip-higher---11-november-2026-11112026"
     },
     {
-      "title": "Bloomberg: Futures mixed ahead of CPI",
-      "url": "https://bloomberg.com/news/articles/2026-11-10/us-stock-futures-trade-mixed-with-focus-on-cpi-anthropic-ipo"
+      "title": "NQ Wizard: NQ Trade Plan 11/11",
+      "url": "https://thenqmarketwizard.substack.com/p/nq-trade-plan-1111-6d0"
     }
   ]
 }

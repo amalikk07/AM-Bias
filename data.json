@@ -1,15 +1,66 @@
 {
-  "updated": "Wed Nov 11 · 9:24 AM ET",
-  "date": "2026-11-11",
-  "vals": {"yld": 0, "dxy": -2, "on": 2, "lvl": 2, "fed": 0, "vix": 2},
+  "updated": "Thu Nov 12 · 7:59 AM ET",
+  "date": "2026-11-12",
+  "vals": {
+    "yld": 0,
+    "dxy": 0,
+    "on": -2,
+    "lvl": -1,
+    "fed": -1,
+    "vix": -1
+  },
   "onh": "",
   "onl": "",
   "event": false,
-  "brief": "Nasdaq 100 futures are up roughly 1.7% before the open as AI and chip names (Nvidia, AMD, Micron, CoreWeave) rebound from Tuesday's hot-CPI selloff, and VIX is down about 6%. The dollar is notably firmer (EURUSD -0.66%, USDJPY +0.55%), a headwind for tech. The Treasury cash market is closed for Veterans Day, so the yield factor is scored 0, but the 10-year closed Tuesday near 4.98% after a 10 bp jump. The key risk for the session is the rate backdrop: markets are pricing elevated odds of a December hike, and a gap this large can fade if yields or the dollar keep rising.",
-  "calendar": [],
+  "brief": "Nasdaq 100 futures are down about 0.8% premarket (near 28,250) after reports that Nvidia's board is preparing to oust CEO Jensen Huang, with Nvidia off roughly 5-6% and weighing on AI names; VIX is up about 5%. The 10-year yield is near 4.99% (+1.5 bp) and the dollar is flat. Several Fed speakers seen as hawkish (Hammack, Barr, Schmid) speak today amid pricing for a December hike, and jobless claims are at 8:30. Key risk is headline-driven volatility from further Nvidia board news; NQ overnight high/low were not available and the prior-day range position is estimated.",
+  "calendar": [
+    {
+      "time": "8:30",
+      "event": "Initial Jobless Claims",
+      "impact": "high"
+    },
+    {
+      "time": "9:00",
+      "event": "Fed's Hammack speaks",
+      "impact": "medium"
+    },
+    {
+      "time": "10:00",
+      "event": "Fed's Barr speaks",
+      "impact": "medium"
+    },
+    {
+      "time": "10:00",
+      "event": "Existing Home Sales (Oct)",
+      "impact": "medium"
+    },
+    {
+      "time": "11:15",
+      "event": "Fed's Goolsbee speaks",
+      "impact": "medium"
+    },
+    {
+      "time": "13:10",
+      "event": "Fed's Daly speaks",
+      "impact": "medium"
+    }
+  ],
   "sources": [
-    {"title": "Yahoo Finance: Stock market today, Nov 11", "url": "https://finance.yahoo.com/markets/live/stock-market-today-wednesday-november-11-dow-sp-500-nasdaq-nvidia-treasurys-123445799.html"},
-    {"title": "Stocktitan: Tech stocks rebound, Nov 11", "url": "https://www.stocktitan.net/articles/stock-market-today-live-november-11-2026"},
-    {"title": "TradingKey: US pre-market movers", "url": "https://www.tradingkey.com/analysis/stocks/us-stocks/262300663-coreweave-nvda-mu-amd-sndk-tradingkey"}
+    {
+      "title": "Yahoo Finance: Stock market today, Nov 12",
+      "url": "https://finance.yahoo.com/markets/live/stock-market-today-thursday-november-12-sp-500-nasdaq-dow-nvidia-invest-110027430.html"
+    },
+    {
+      "title": "Newsquawk: US Opening News, Nov 12",
+      "url": "https://www.newsquawk.com/headlines/newsquawk-daily-us-opening-news---12th-november-2026"
+    },
+    {
+      "title": "Saxo: Market Quick Take, Nov 12",
+      "url": "https://www.home.saxo/en-mena/content/articles/macro/market-quick-take---nvidia-stumble-weighs-on-sentiment---12-november-2026-12112026"
+    },
+    {
+      "title": "NQ Trade Plan 11/12",
+      "url": "https://thenqmarketwizard.substack.com/p/nq-trade-plan-1112-57f"
+    }
   ]
 }

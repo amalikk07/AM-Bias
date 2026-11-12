@@ -1,5 +1,5 @@
 {
-  "updated": "Thu Nov 12 · 7:59 AM ET",
+  "updated": "Thu Nov 12 · 9:24 AM ET",
   "date": "2026-11-12",
   "vals": {
     "yld": 0,
@@ -7,12 +7,12 @@
     "on": -2,
     "lvl": -1,
     "fed": -1,
-    "vix": -1
+    "vix": -2
   },
   "onh": "",
   "onl": "",
   "event": false,
-  "brief": "Nasdaq 100 futures are down about 0.8% premarket (near 28,250) after reports that Nvidia's board is preparing to oust CEO Jensen Huang, with Nvidia off roughly 5-6% and weighing on AI names; VIX is up about 5%. The 10-year yield is near 4.99% (+1.5 bp) and the dollar is flat. Several Fed speakers seen as hawkish (Hammack, Barr, Schmid) speak today amid pricing for a December hike, and jobless claims are at 8:30. Key risk is headline-driven volatility from further Nvidia board news; NQ overnight high/low were not available and the prior-day range position is estimated.",
+  "brief": "Nasdaq 100 futures are sharply lower into the open after Nvidia CEO Jensen Huang's reported resignation amid board turmoil, with Nvidia down roughly 7% premarket and dragging AI and chip names; VIX is up about 6.6% near 18.6. The 10-year yield is back near 5% after Wednesday's bond-market holiday and the dollar is flat. Fed speakers through the afternoon (Goolsbee 11:15, Daly 1:10) come amid pricing for a possible December hike. Key risk for the full session is further Nvidia leadership headlines driving two-way volatility; overnight high/low were not available.",
   "calendar": [
     {
       "time": "8:30",
@@ -51,8 +51,8 @@
       "url": "https://finance.yahoo.com/markets/live/stock-market-today-thursday-november-12-sp-500-nasdaq-dow-nvidia-invest-110027430.html"
     },
     {
-      "title": "Newsquawk: US Opening News, Nov 12",
-      "url": "https://www.newsquawk.com/headlines/newsquawk-daily-us-opening-news---12th-november-2026"
+      "title": "Stocktitan: Stock market today live, Nov 12",
+      "url": "https://www.stocktitan.net/articles/stock-market-today-live-november-12-2026"
     },
     {
       "title": "Saxo: Market Quick Take, Nov 12",

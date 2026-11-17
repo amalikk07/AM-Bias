@@ -2,46 +2,50 @@
  "q": {
   "ndq": {
    "symbol": "^IXIC",
-   "price": 24494.117,
-   "changePercentage": -2.5547,
-   "change": -642.156,
+   "price": 24509.7576,
+   "changePercentage": -2.49248,
+   "change": -626.5154,
    "dayLow": 24460.28,
    "dayHigh": 24882.037,
    "previousClose": 25136.273,
-   "timestamp": 1794861786
+   "timestamp": 1794862804
   },
   "vix": {
    "symbol": "^VIX",
-   "price": 23.88,
-   "changePercentage": 23.73057,
-   "change": 4.58,
+   "price": 22.91,
+   "changePercentage": 18.70466,
+   "change": 3.61,
    "dayLow": 19.84,
    "dayHigh": 24.52,
    "previousClose": 19.3,
-   "timestamp": 1794861781
+   "timestamp": 1794863701
   },
   "eur": {
    "symbol": "EURUSD",
-   "price": 1.09984,
-   "changePercentage": -0.26651,
-   "change": -0.002939,
-   "dayLow": 1.09938,
-   "dayHigh": 1.10375,
-   "previousClose": 1.10278,
-   "timestamp": 1794861785
+   "price": 1.10049,
+   "changePercentage": 0.06755189,
+   "change": 0.0007429,
+   "dayLow": 1.09878,
+   "dayHigh": 1.10084,
+   "previousClose": 1.09975,
+   "timestamp": 1794885029
   },
   "jpy": {
    "symbol": "USDJPY",
-   "price": 159.456,
-   "changePercentage": -0.14403,
-   "change": -0.23,
-   "dayLow": 159.342,
-   "dayHigh": 159.894,
-   "previousClose": 159.686,
-   "timestamp": 1794861789
+   "price": 159.387,
+   "changePercentage": -0.00313692,
+   "change": -0.005,
+   "dayLow": 159.328,
+   "dayHigh": 159.612,
+   "previousClose": 159.392,
+   "timestamp": 1794885030
   }
  },
  "yld": [
+  {
+   "date": "2026-11-16",
+   "year10": 5.12
+  },
   {
    "date": "2026-11-13",
    "year10": 5.15
@@ -57,12 +61,8 @@
   {
    "date": "2026-11-09",
    "year10": 4.88
-  },
-  {
-   "date": "2026-11-06",
-   "year10": 4.86
   }
  ],
- "yldDay": "2026-11-16",
- "updated": "2026-11-16T20:43:11+00:00"
+ "yldDay": "2026-11-17",
+ "updated": "2026-11-17T03:10:31+00:00"
 }

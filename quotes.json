@@ -2,46 +2,50 @@
  "q": {
   "ndq": {
    "symbol": "^IXIC",
-   "price": 22654.1482,
-   "changePercentage": -5.1302,
-   "change": -1225.0518,
-   "dayLow": 22513.014,
-   "dayHigh": 23837.764,
-   "previousClose": 23879.2,
-   "timestamp": 1795208401
+   "price": 24089.5577,
+   "changePercentage": 6.5074,
+   "change": 1471.8257,
+   "dayLow": 23794.957,
+   "dayHigh": 24353.65,
+   "previousClose": 22617.732,
+   "timestamp": 1795467605
   },
   "vix": {
    "symbol": "^VIX",
-   "price": 35.89,
-   "changePercentage": 26.1955,
-   "change": 7.45,
-   "dayLow": 26.94,
-   "dayHigh": 40.03,
-   "previousClose": 28.44,
-   "timestamp": 1795209286
+   "price": 26.62,
+   "changePercentage": -25.82892,
+   "change": -9.27,
+   "dayLow": 15.39,
+   "dayHigh": 35.08,
+   "previousClose": 35.89,
+   "timestamp": 1795468501
   },
   "eur": {
    "symbol": "EURUSD",
-   "price": 1.09745,
-   "changePercentage": 0.06692684,
-   "change": 0.000734,
-   "dayLow": 1.09569,
-   "dayHigh": 1.10001,
-   "previousClose": 1.09672,
-   "timestamp": 1795213786
+   "price": 1.09022,
+   "changePercentage": -0.65916,
+   "change": -0.007234,
+   "dayLow": 1.08849,
+   "dayHigh": 1.10084,
+   "previousClose": 1.09745,
+   "timestamp": 1795472273
   },
   "jpy": {
    "symbol": "USDJPY",
-   "price": 158.512,
-   "changePercentage": -0.68233,
-   "change": -1.089,
-   "dayLow": 158.408,
-   "dayHigh": 159.841,
-   "previousClose": 159.601,
-   "timestamp": 1795211998
+   "price": 158.939,
+   "changePercentage": 0.26938,
+   "change": 0.427,
+   "dayLow": 158.474,
+   "dayHigh": 159.503,
+   "previousClose": 158.512,
+   "timestamp": 1795472263
   }
  },
  "yld": [
+  {
+   "date": "2026-11-23",
+   "year10": 4.92
+  },
   {
    "date": "2026-11-20",
    "year10": 4.92
@@ -57,12 +61,8 @@
   {
    "date": "2026-11-17",
    "year10": 5.1
-  },
-  {
-   "date": "2026-11-16",
-   "year10": 5.12
   }
  ],
- "yldDay": "2026-11-21",
- "updated": "2026-11-21T00:25:57+00:00"
+ "yldDay": "2026-11-23",
+ "updated": "2026-11-23T22:17:54+00:00"
 }

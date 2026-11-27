@@ -5,8 +5,8 @@
    "price": 23585.803,
    "changePercentage": -0.62246,
    "change": -147.732,
-   "dayLow": 22632.396,
-   "dayHigh": 23627.453,
+   "dayLow": 23585.803,
+   "dayHigh": 23585.803,
    "previousClose": 23733.535,
    "timestamp": 1795644959
   },
@@ -22,23 +22,23 @@
   },
   "eur": {
    "symbol": "EURUSD",
-   "price": 1.09714,
-   "changePercentage": -0.09443832,
-   "change": -0.0010371,
-   "dayLow": 1.09601,
-   "dayHigh": 1.09914,
-   "previousClose": 1.09818,
-   "timestamp": 1795722871
+   "price": 1.09778,
+   "changePercentage": 0.0297136,
+   "change": 0.000326093064,
+   "dayLow": 1.09614,
+   "dayHigh": 1.09806,
+   "previousClose": 1.09745,
+   "timestamp": 1795746679
   },
   "jpy": {
    "symbol": "USDJPY",
-   "price": 159.263,
-   "changePercentage": 0.08798225,
-   "change": 0.14,
-   "dayLow": 158.946,
-   "dayHigh": 159.338,
-   "previousClose": 159.123,
-   "timestamp": 1795722876
+   "price": 159.224,
+   "changePercentage": -0.00125608,
+   "change": -0.002,
+   "dayLow": 159.176,
+   "dayHigh": 159.379,
+   "previousClose": 159.226,
+   "timestamp": 1795746684
   }
  },
  "yld": [
@@ -63,6 +63,6 @@
    "year10": 5.04
   }
  ],
- "yldDay": "2026-11-26",
- "updated": "2026-11-26T19:54:43+00:00"
+ "yldDay": "2026-11-27",
+ "updated": "2026-11-27T02:31:25+00:00"
 }

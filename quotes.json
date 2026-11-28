@@ -8,7 +8,7 @@
    "dayLow": 23690.5961,
    "dayHigh": 24149.0869,
    "previousClose": 23585.8023,
-   "timestamp": 1795802340
+   "timestamp": 1795802400
   },
   "vix": {
    "symbol": "^VIX",
@@ -22,26 +22,30 @@
   },
   "eur": {
    "symbol": "EURUSD",
-   "price": 1.09356,
-   "changePercentage": -0.35482,
-   "change": -0.003894,
-   "dayLow": 1.09322,
+   "price": 1.09385,
+   "changePercentage": -0.32817,
+   "change": -0.0036015,
+   "dayLow": 1.09312,
    "dayHigh": 1.09878,
    "previousClose": 1.09745,
-   "timestamp": 1795808586
+   "timestamp": 1795818586
   },
   "jpy": {
    "symbol": "USDJPY",
-   "price": 159.553,
-   "changePercentage": 0.20537,
-   "change": 0.327,
+   "price": 159.515,
+   "changePercentage": 0.1815,
+   "change": 0.289,
    "dayLow": 159.135,
    "dayHigh": 159.595,
    "previousClose": 159.226,
-   "timestamp": 1795808592
+   "timestamp": 1795816818
   }
  },
  "yld": [
+  {
+   "date": "2026-11-27",
+   "year10": 4.94
+  },
   {
    "date": "2026-11-25",
    "year10": 4.85
@@ -57,12 +61,8 @@
   {
    "date": "2026-11-20",
    "year10": 4.92
-  },
-  {
-   "date": "2026-11-19",
-   "year10": 5.04
   }
  ],
- "yldDay": "2026-11-27",
- "updated": "2026-11-27T19:43:13+00:00"
+ "yldDay": "2026-11-28",
+ "updated": "2026-11-28T02:11:23+00:00"
 }
